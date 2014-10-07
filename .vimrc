@@ -7,7 +7,8 @@ filetype off
 set keymodel-=stopsel
 set selectmode=key
 set selection=exclusive
-set clipboard=unnamed,unnamedplus
+"set clipboard=unnamed,unnamedplus
+set clipboard=unnamedplus
 set virtualedit=onemore
 set noequalalways
 
@@ -25,15 +26,21 @@ map <PageUp> <C-U>
 map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
+
+map <c-k> <C-U>
+map <c-j> <C-D>
+imap <c-k> <C-O><C-U>
+imap <c-j> <C-O><C-D>
+
 set nostartofline
 
 set foldlevelstart=20
-"set foldmethod=syntax
+set foldmethod=indent
 set foldcolumn=3
 
-setlocal foldmethod=expr
-setlocal foldexpr=(getline(v:lnum)=~'^$')?-1:((indent(v:lnum)<indent(v:lnum+1))?('>'.indent(v:lnum+1)):indent(v:lnum))
-set foldtext=getline(v:foldstart)
+"setlocal foldmethod=expr
+"setlocal foldexpr=(getline(v:lnum)=~'^$')?-1:((indent(v:lnum)<indent(v:lnum+1))?('>'.indent(v:lnum+1)):indent(v:lnum))
+"set foldtext=getline(v:foldstart)
 set fillchars=fold:\ "(there's a space after that \)
 " highlight Folded ctermfg=DarkGreen ctermbg=Black
 nnoremap <S-Left> zo
@@ -42,20 +49,21 @@ nnoremap <S-Right> zc
 inoremap <S-Right> <C-O>zc
 " Shift-Up Shift-Down (incase Shift is held while browsing folds)
 nmap <S-Up> <Up>
-imap <S-Up> <Up>
 nmap <S-Down> <Down>
+imap <S-Up> <Up>
 imap <S-Down> <Down>
+vmap <S-Up> <Up>
+vmap <S-Down> <Down>
 
-autocmd BufWinLeave *.rb mkview
-autocmd BufWinEnter *.rb silent loadview
+"autocmd BufWinLeave *.rb mkview
+"autocmd BufWinEnter *.rb silent loadview
 
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" Bundle 'ervandew/supertab'
+"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " reverse J command
-nnoremap <C-J> vaW<Esc>Bi<CR><Esc>k:s/\s\+$//<CR>$
+"nnoremap <C-J> vaW<Esc>Bi<CR><Esc>k:s/\s\+$//<CR>$
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -65,37 +73,68 @@ Bundle 'gmarik/vundle'
 "Bundle 'Valloric/YouCompleteMe'
 "let g:EclimCompletionMethod = 'omnifunc'
 
-Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='bubblegum'
-Bundle 'paranoida/vim-airlineish'
-"let g:airline_theme='airlineish'
-let g:airline_theme='solarized'
+" very SLOW
+"Bundle "ervandew/supertab"
+
+"Bundle 'jeetsukumaran/vim-buffergator'
+" Bundle 'jlanzarotta/bufexplorer'
+
+"let g:bufferline_active_buffer_left = ''
+"let g:bufferline_active_buffer_right = ''
+"let g:bufferline_echo = 0
+"Bundle 'bling/vim-bufferline'
+
+"Bundle 'bling/vim-airline'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"Bundle 'paranoida/vim-airlineish'
+"let g:airline_theme='solarized'
+
+Bundle 'stefanoverna/vim-i18n'
+vmap <Leader>t :call I18nTranslateString()<CR>
 
 "Bundle 'airblade/vim-gitgutter'
 "Bundle 'tpope/vim-fugitive'
+"nmap <leader>g :execute '! cd ' . getcwd() . ' && gt<space>
+
+"function! CommitAndPush(args)
+  "let l:message = a:args . join(a:000, ' ')
+  "exe ":Git add ."
+  "exe ":Git commit -am '" . l:message . " ' "
+  "exe ":Git push"
+"endfunction
+"command! -bang -nargs=* Gt call CommitAndPush(<q-args>)
+"nnoremap <leader>g :Gt<space>
+
+"function! PushToCurrentBranch()
+  "exe ":Gadd " . getcwd()
+  "exe ":Gcommit -a"
+  "exe ":Git push"
+"endfunction
+
+" Map gwp keys to call the function
+"nnoremap <leader>g :call PushToCurrentBranch()<CR>
 
 "Bundle 'AndrewRadev/switch.vim'
 "nnoremap - :Switch<cr>
 
 " Bundle 'mileszs/ack.vim'
-Bundle 'glebtv/ack.vim'
-nnoremap <leader>a :Ack!<space>
+"Bundle 'glebtv/ack.vim'
+" nnoremap <leader>a :Ack!<space>
 
 " Bundle 'dyng/ctrlsf.vim'
 " let g:ctrlsf_ackprg = 'ack'
+" nnoremap <leader>x :CtrlSF<space>
 
-" let g:multi_cursor_start_key='<F10>'
-" Bundle 'terryma/vim-multiple-cursors'
+let g:aghighlight=1
+Bundle 'rking/ag.vim'
+nnoremap <leader>a :Ag<space>
 
+Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-Bundle 'nathanaelkane/vim-indent-guides'
-
-"let g:airline_powerline_fonts = 1
-"Bundle 'bling/vim-airline'
 
 "Bundle 'Lokaltog/vim-easymotion'
 "let g:EasyMotion_leader_key = '<Leader>'
@@ -105,10 +144,36 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
+"Bundle 'tpope/vim-vinegar'
 
+let NERDTreeMinimalUI=1
 Bundle 'scrooloose/nerdtree'
-nmap <C-n> :NERDTreeToggle<CR>
-Bundle 'tyok/nerdtree-ack'
+map <C-n> :NERDTreeToggle<CR>
+"map <leader>n :NERDTreeToggle<CR>
+map <leader>n :execute 'NERDTreeToggle ' . getcwd()<CR>
+"Bundle 'tyok/nerdtree-ack'
+
+let g:multi_cursor_use_default_mapping=0
+Bundle 'terryma/vim-multiple-cursors'
+" Default mapping
+let g:multi_cursor_next_key='<C-q>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" let g:multi_cursor_start_key='<F10>'
+" Bundle 'terryma/vim-multiple-cursors'
+
+" Easy splitted window navigation
+"noremap <C-h>  <C-w>h
+"noremap <C-j>  <C-w>j
+"noremap <C-k>  <C-w>k
+"noremap <C-l>  <C-w>l
+
+noremap <M-h>  <C-w>h
+noremap <M-j>  <C-w>j
+noremap <M-k>  <C-w>k
+noremap <M-l>  <C-w>l
 
 map <M-Right> <c-w>l
 map <M-Left> <c-w>h
@@ -127,26 +192,121 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=M 
 
-Bundle 'vim-scripts/YankRing.vim'
-let g:yankring_window_use_horiz = 0
-let g:yankring_window_use_right = 1
-let g:yankring_replace_n_pkey = '<leader>p'
-let g:yankring_replace_n_nkey = '<leader>o'
-let g:yankring_del_v_key = '<M-d>'
-nmap <M-p> :YRReplace -1, ''P''<CR>
-nmap <M-o> :YRReplace 1, ''P''<CR>
+Bundle 'maxbrunsfeld/vim-yankstack'
+map <leader>y :Yanks<CR>
 
-let g:yankring_history_dir = '~/.vim/tmp/'
- nmap <leader>y :YRShow<cr>
+"Bundle 'vim-scripts/YankRing.vim'
+"let g:yankring_window_use_horiz = 0
+"let g:yankring_window_use_right = 1
+"let g:yankring_replace_n_pkey = '<leader>p'
+"let g:yankring_replace_n_nkey = '<leader>o'
+"let g:yankring_del_v_key = '<M-d>'
+"nmap <M-p> :YRReplace -1, ''P''<CR>
+"nmap <M-o> :YRReplace 1, ''P''<CR>
+
+"let g:yankring_history_dir = '~/.vim/tmp/'
+"map <leader>y :YRShow<CR>
+"map! <F12>y :YRShow<CR>
 
 nnoremap <M-s> "_diwP
 vnoremap <M-s> "_dP
+nnoremap <M-a> vw"_dP
 
-Bundle 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|public|log|_etc|node_modules|bower_components|coverage)$',
   \ 'file': '\v\.(exe|so|dll|log|pid)$',
   \ }
+
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_mruf_relative = 1
+"let g:ctrlp_prompt_mappings = { 'ToggleMRURelative()': ['<F2>'] }
+"let g:ctrlp_extensions = ['funky']
+"Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'kien/ctrlp.vim'
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+map <c-space> :CtrlPMRU<CR>
+map <leader>m :CtrlPMixed<CR>
+map <leader>b :CtrlPBuffer<CR>
+
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_function': {
+      \   'mode': 'MyMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \   'ctrlspmark': 'CtrlSpMark'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+let g:lightline.component = {
+  \ 'filename': '%F'
+  \ }
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ fname =~ 'NERD_tree_1' ? 'NERDTree' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+"function! CtrlSpMark()
+  "if expand('%:t') =~ '__CS__'
+    "return ctrlspace#statusline_mode_segment()
+  "else
+    "return ''
+  "endif
+"endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+Bundle 'itchyny/lightline.vim'
+
 
 nmap <C-e> :e#<CR>
 
@@ -158,20 +318,24 @@ map <F3> "_dd
 
 " delete without putting to buffer 
 map <F4> "_d
-map R "_d
+map <leader>d "_d
+"map R "_d
 
 set shortmess+=filmnrxoOtT
 
 Bundle 'scrooloose/nerdcommenter'
-nmap <F6> :call NERDComment(0, "invert")<cr>
-vmap <F6> :call NERDComment(0, "invert")<cr>
+map <silent><F6> :call NERDComment(0, "invert")<cr>
+map <silent><leader>r :call NERDComment(0, "invert")<cr>
+
+map <leader>v :e ~/.vimrc<cr>
+map <leader>7 :e ~/.i3/config<cr>
 
 " delete windows \r newlines
 map <F7> :%s/\r//g<cr>
 
 let g:undotree_SetFocusWhenToggle=1
 Bundle 'mbbill/undotree'
-nnoremap <F8> :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 "noremap <F9> :w<CR>
 
@@ -180,11 +344,10 @@ nnoremap <silent> <F10> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Bundle 'chrisbra/csv.vim'
 
-" let g:syntastic_ruby_exec=""
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby'], 'passive_filetypes': ['html', 'css', 'slim'] }
-Bundle 'scrooloose/syntastic'
+"let g:syntastic_enable_signs=1
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby'], 'passive_filetypes': ['html', 'css', 'slim'] }
+"Bundle 'scrooloose/syntastic'
 
 hi clear SpellBad
 hi clear SpellCap
@@ -196,36 +359,41 @@ autocmd FileType gitcommit setlocal foldmethod=manual
 
 "Bundle 'mhinz/vim-signify'
 
+"set regexpengine=1
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-bundler'
+"Bundle 'tpope/vim-rvm'
 
-autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
-autocmd FileType ruby,eruby,yaml setlocal foldmethod=syntax
-autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+" autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
+" autocmd FileType ruby,eruby,yaml setlocal foldmethod=syntax
+" autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-Bundle 'tpope/vim-haml'
+Bundle 'glebtv/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 
-Bundle 'digitaltoad/vim-jade'
-Bundle 'wavded/vim-stylus'
+"Bundle 'digitaltoad/vim-jade'
+"Bundle 'wavded/vim-stylus'
 
-Bundle 'benmills/vimux'
-Bundle 'skalnik/vim-vroom'
-let g:vroom_use_vimux = "1"
-let g:vroom_use_colors = "1"
-let g:vroom_use_spring = "1"
-let g:vroom_write_all = "1"
-let g:VimuxUseNearestPane = 1
-let g:VimuxHeight = "100"
+"Bundle 'benmills/vimux'
+"Bundle 'skalnik/vim-vroom'
+"let g:vroom_use_vimux = "1"
+"let g:vroom_use_colors = "1"
+"let g:vroom_use_spring = "1"
+"let g:vroom_write_all = "1"
+"let g:VimuxUseNearestPane = 1
+"let g:VimuxHeight = "100"
 
-au BufNewFile,BufReadPost *.sass setl foldmethod=indent
+" au BufNewFile,BufReadPost *.sass setl foldmethod=indent
 
-au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent
-au BufNewFile,BufReadPost *.skim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+" au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+" au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent
+" au BufNewFile,BufReadPost *.skim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent
 autocmd BufNewFile,BufRead *.skim set syntax=slim|set ft=slim
 autocmd BufNewFile,BufRead *.slim set syntax=slim|set ft=slim
 
@@ -234,12 +402,15 @@ autocmd BufNewFile,BufRead *.slim set syntax=slim|set ft=slim
 " Bundle 'JulesWang/css.vim'
 
 Bundle 'kchmck/vim-coffee-script'
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+
+" au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 " Bundle 'alfredodeza/jacinto.vim'
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+" au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+" au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
+" very buggy
 "Bundle 'ap/vim-css-color'
 
 filetype plugin indent on
@@ -270,11 +441,11 @@ set switchbuf=useopen
 " Highlight VCS conflict markers
 " match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-nmap <silent> <leader>hh :set invhlsearch<CR>
-nmap <silent> <leader>ll :set invlist<CR>
-nmap <silent> <leader>nn :set invnumber<CR>
-nmap <silent> <leader>pp :set invpaste<CR>
-nmap <silent> <leader>ii :set invrelativenumber<CR>
+" nmap <silent> <leader>hh :set invhlsearch<CR>
+" nmap <silent> <leader>ll :set invlist<CR>
+" nmap <silent> <leader>nn :set invnumber<CR>
+" nmap <silent> <leader>pp :set invpaste<CR>
+" nmap <silent> <leader>ii :set invrelativenumber<CR>
 
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
@@ -302,7 +473,8 @@ set list
 " Don't redraw while executing macros
 set nolazyredraw
 
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=nbsp:¬,tab:▸\ ,eol:¬,extends:❯,precedes:❮
+" set listchars=eol:¶,tab:>-,extends:»,precedes:«,trail:•
 set showbreak=↪
 
 set notimeout
@@ -327,7 +499,7 @@ set ruler
 
 " SLOW SCROLL!
 set cursorline
-set relativenumber
+"set relativenumber
 
 set number
 
@@ -381,7 +553,7 @@ nnoremap N Nzzzv
 
 " Same when jumping around
 nnoremap g; g;zz
-nnoremap g, g,zz
+"nnoremap g, g,zz
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -397,12 +569,6 @@ noremap L g_
 " nnoremap k gk
 " vnoremap j gj
 " vnoremap k gk
-
-" Easy splitted window navigation
-noremap <C-h>  <C-w>h
-noremap <C-j>  <C-w>j
-noremap <C-k>  <C-w>k
-noremap <C-l>  <C-w>l
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -432,61 +598,70 @@ imap <silent> <Home> <C-O><Home>
 nnoremap <space> i <Esc>
 nnoremap <bs> i<bs><Esc>l
 
-Bundle 'vim-scripts/wipeout'
+Bundle 'artnez/vim-wipeout'
 
-function! DelEmptyLineBelow()
-  if line(".") == line("$")
-    return
-  end
-  let l:line = getline(line(".") + 1)
-  if l:line =~ '^\s*$'
-    let l:colsave = col(".")
-    .+1d
-    ''
-    call cursor(line("."), l:colsave)
-  end
-endfunction
+"Bundle 'jeetsukumaran/vim-markology'
+"hi MarkologyHLl ctermfg=green ctermbg=black cterm=bold guifg=green guibg=#002B36
+"hi MarkologyHLLine cterm=underline gui=undercurl guisp=#007777
+"hi MarkologyHLu ctermfg=green ctermbg=black cterm=bold guifg=green guibg=#002B36
+"hi MarkologyHLo ctermfg=green ctermbg=black cterm=bold guifg=green guibg=#002B36
+"hi MarkologyHLm ctermfg=green ctermbg=black cterm=bold guifg=green guibg=#002B36
+hi SignColumn ctermfg=green ctermbg=black cterm=bold guifg=green guibg=#002B36
 
-function! DelEmptyLineAbove()
-  if line(".") == 1
-    return
-  end
-  let l:line = getline(line(".") - 1)
-  if l:line =~ '^\s*$'
-    let l:colsave = col(".")
-    .-1d
-    silent normal! <C-y>
-    call cursor(line("."), l:colsave)
-  end
-endfunction
+"function! DelEmptyLineBelow()
+  "if line(".") == line("$")
+    "return
+  "end
+  "let l:line = getline(line(".") + 1)
+  "if l:line =~ '^\s*$'
+    "let l:colsave = col(".")
+    ".+1d
+    "''
+    "call cursor(line("."), l:colsave)
+  "end
+"endfunction
 
-function! DelLineBelow()
-  if line(".") == line("$")
-    return
-  end
-  let l:line = getline(line(".") + 1)
-  let l:colsave = col(".")
-  .+1d
-  ''
-  call cursor(line("."), l:colsave)
-endfunction
+"function! DelEmptyLineAbove()
+  "if line(".") == 1
+    "return
+  "end
+  "let l:line = getline(line(".") - 1)
+  "if l:line =~ '^\s*$'
+    "let l:colsave = col(".")
+    ".-1d
+    "silent normal! <C-y>
+    "call cursor(line("."), l:colsave)
+  "end
+"endfunction
 
-function! DelLineAbove()
-  if line(".") == 1
-    return
-  end
-  let l:line = getline(line(".") - 1)
-  let l:colsave = col(".")
-  .-1d
-  silent normal! <C-y>
-  call cursor(line("."), l:colsave)
-endfunction
+"function! DelLineBelow()
+  "if line(".") == line("$")
+    "return
+  "end
+  "let l:line = getline(line(".") + 1)
+  "let l:colsave = col(".")
+  ".+1d
+  "''
+  "call cursor(line("."), l:colsave)
+"endfunction
 
-noremap <silent> <T-]> :call DelEmptyLineBelow()<CR>
-noremap <silent> <T-[> :call DelEmptyLineAbove()<CR>
+"function! DelLineAbove()
+  "if line(".") == 1
+    "return
+  "end
+  "let l:line = getline(line(".") - 1)
+  "let l:colsave = col(".")
+  ".-1d
+  "silent normal! <C-y>
+  "call cursor(line("."), l:colsave)
+"endfunction
 
-noremap <silent> <C-T-]> :call DelLineBelow()<CR>
-noremap <silent> <C-T-[> :call DelLineAbove()<CR>
+
+"noremap <silent> <c-[> :call DelEmptyLineAbove()<CR>
+"noremap <silent> <c-]> :call DelEmptyLineBelow()<CR>
+
+"noremap <silent> <c-m-]> :call DelLineBelow()<CR>
+"noremap <silent> <c-m-[> :call DelLineAbove()<CR>
 
 vmap <Tab> :><CR>gv
 vmap <S-Tab> :<<CR>gv
@@ -494,15 +669,24 @@ vmap <S-Tab> :<<CR>gv
 nmap <Tab> >>
 nmap <S-Tab> <<
 
+imap <Tab> <c-t>
+imap <S-Tab> <c-d>
+
 nmap <C-Tab> ==
 
 " Yank from current cursor position to end of line
 nmap Y y$
 vmap Y y$
 
-nmap <F14> <C-w>q
-nmap <F13> <C-w>v
-nmap <F15> <C-w>s
+"nmap <F14> <C-w>q
+"nmap <F13> <C-w>v
+"nmap <F15> <C-w>s
+
+
+nmap <m-x> <C-w>q
+nmap <m-c> <C-w>q
+nmap <m-'> <C-w>v
+nmap <m-/> <C-w>s
 
 
 "Bundle 'mhinz/vim-startify'
@@ -514,65 +698,36 @@ nmap <F15> <C-w>s
 " Bundle 'fholgado/minibufexpl.vim'
 " map <F12> :MBEToggle<cr>
 
-if has("gui_running")
-  function! ScreenFilename()
-    if has('amiga')
-      return "s:.vimsize"
-    elseif has('win32')
-      return $HOME.'\_vimsize'
-    else
-      return $HOME.'/.vimsize'
-    endif
-  endfunction
-
-  function! ScreenRestore()
-    " Restore window size (columns and lines) and position
-    " from values stored in vimsize file.
-    " Must set font first so columns and lines are based on font size.
-    let f = ScreenFilename()
-    if has("gui_running") && g:screen_size_restore_pos && filereadable(f)
-      let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
-      for line in readfile(f)
-        let sizepos = split(line)
-        if len(sizepos) == 5 && sizepos[0] == vim_instance
-          silent! execute "set columns=".sizepos[1]." lines=".sizepos[2]
-          silent! execute "winpos ".sizepos[3]." ".sizepos[4]
-          return
-        endif
-      endfor
-    endif
-  endfunction
-
-  function! ScreenSave()
-    " Save window size and position.
-    if has("gui_running") && g:screen_size_restore_pos
-      let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
-      let data = vim_instance . ' ' . &columns . ' ' . &lines . ' ' .
-            \ (getwinposx()<0?0:getwinposx()) . ' ' .
-            \ (getwinposy()<0?0:getwinposy())
-      let f = ScreenFilename()
-      if filereadable(f)
-        let lines = readfile(f)
-        call filter(lines, "v:val !~ '^" . vim_instance . "\\>'")
-        call add(lines, data)
-      else
-        let lines = [data]
-      endif
-      call writefile(lines, f)
-    endif
-  endfunction
-
-  if !exists('g:screen_size_restore_pos')
-    let g:screen_size_restore_pos = 1
-  endif
-  if !exists('g:screen_size_by_vim_instance')
-    let g:screen_size_by_vim_instance = 1
-  endif
-  autocmd VimEnter * if g:screen_size_restore_pos == 1 | call ScreenRestore() | endif
-  autocmd VimLeavePre * if g:screen_size_restore_pos == 1 | call ScreenSave() | endif
-endif
-
 "hi FoldColumn guifg=#444444 guibg=#1B1D1E
 "hi Folded guifg=#999999 guibg=#444444
 "hi VertSplit guifg=#999999 guibg=#333333
+
+
+map <leader>q :ZoomWin<cr>
+
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-session'
+
+"let g:session_autosave='no'
+"let g:session_autoload='no'
+
+"Bundle 'zoeesilcock/vim-caniuse'
+
+"Bundle 'AndrewRadev/splitjoin.vim'
+"nmap sj :SplitjoinSplit<cr>
+"nmap sk :SplitjoinJoin<cr>
+
+"Bundle 'szw/vim-ctrlspace'
+"nnoremap <M-t> :tabnew<CR>
+"nnoremap <C-Left> :tabprev<CR>
+"nnoremap <C-Right> :tabnext<CR>
+"nnoremap <C-c> :tabclose<CR>
+
+"set showtabline=0
+"let g:ctrlspace_use_tabline=1
+
+"Bundle 'othree/eregex.vim'
+"nnoremap <leader>/ :call eregex#toggle()<CR>
+
+"Bundle 'saihoooooooo/glowshi-ft.vim'
 
