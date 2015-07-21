@@ -11,6 +11,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
  
 "}}}
 
+" let g:NERDTreeDirArrows=0
+
 "autocmd InsertEnter * let CursorColumnI = col('.')
 "autocmd CursorMovedI * let CursorColumnI = col('.')
 "autocmd InsertLeave * call cursor(0, col('.')+1)
@@ -20,18 +22,22 @@ set virtualedit=onemore
 
 set incsearch
 set hlsearch
+set smartcase
+set ignorecase
 set backspace=indent,eol,start
 
-if &term =~ "xterm.*"
-  let &t_ti = &t_ti . "\e[?1004h"
-  let &t_te = "\e[?1004l" . &t_te
-  nnoremap <silent> <ESC>[O <ESC><ESC>:wall<cr>
-  nnoremap <silent> <ESC>[I <ESC>
-  imap <silent> <ESC>[O <ESC><ESC>:wall<cr>
+"if &term =~ "xterm.*"
+  "let &t_ti = &t_ti . "\e[?1004h"
+  "let &t_te = "\e[?1004l" . &t_te
+  "nnoremap <silent> <ESC>[O <ESC><ESC>:wall<cr>
+  "nnoremap <silent> <ESC>[I <ESC>
+  "imap <silent> <ESC>[O <ESC><ESC>:wall<cr>
   "imap <ESC>[I <ESC>
   "nnoremap <Tab> <Esc>
-endif
-" au FocusLost    * :silent! wall
+"endif
+"au FocusLost    * :silent! wall
+map <silent> <C-s> :wall<cr>
+imap <silent> <C-s> <esc>:wall<cr>
 
 set timeout timeoutlen=150 ttimeoutlen=50
 set showcmd
@@ -40,23 +46,22 @@ set showcmd
 nmap <C-e> :e#<CR>
 nnoremap <space> i <Esc>
 
-if &term =~ "xterm\\|rxvt"
+"if &term =~ "xterm\\|rxvt"
   "let &t_SI = "\<Esc>]12;orange\x7"
   "let &t_EI = "\<Esc>]12;red\x7"
   "let &t_SI .= "\<Esc>[4 q"
   "let &t_EI .= "\<Esc>[2 q"
-  let &t_SI .= "\<Esc>[5 q"
-  let &t_EI .= "\<Esc>[0 q"
-endif
-
-set smartcase
+  "let &t_SI .= "\<Esc>[5 q"
+  "let &t_EI .= "\<Esc>[0 q"
+"endif
 
 let mapleader = "\\"
 "let maplocalleader = ","
 
-runtime! python_setup.vim
-noremap <silent> OH ^
-imap <silent> OH <C-O><Home>
+" runtime! python_setup.vim
+
+" noremap <silent> OH ^
+" imap <silent> OH <C-O><Home>
 noremap <silent> <Home> ^
 imap <silent> <Home> <C-O><Home>
 
@@ -76,9 +81,16 @@ set noswapfile
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'rking/ag.vim'
+" NeoBundle 'wincent/ferret'
+"NeoBundle 'wincent/loupe'
 
 let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.whitespace = "!"
 NeoBundle    'bling/vim-airline'
+
 "NeoBundle    'Shougo/neosnippet.vim'
 "NeoBundle    'Shougo/neosnippet-snippets'
 "NeoBundle    'flazz/vim-colorschemes'
@@ -182,6 +194,7 @@ map <S-Down> <Down>
 
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
+command! Wa :wa
 
 map <leader>v :e ~/.nvimrc<cr>
 map <leader>7 :e ~/.i3/config<cr>
@@ -236,3 +249,4 @@ NeoBundleCheck
     set number
   "}}}
 "}}}
+
