@@ -5,9 +5,12 @@
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
+! xscreensaver.logFile:/var/log/xscreensaver.log
+! xscreensaver.verbose:true
+
 Xft.antialias:  1
 Xft.autohint:   0
-Xft.dpi:        96
+Xft.dpi:        140
 Xft.hinting:    1
 Xft.hintstyle:  hintfull
 Xft.rgba:       rgb
@@ -26,17 +29,18 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt*font: xft:PragmataPro:pixelsize=14:antialias=false
-URxvt*boldFont: xft:PragmataPro:pixelsize=14:antialias=false
+URxvt*font: xft:PragmataPro Mono:pixelsize=20:antialias=false
+URxvt*boldFont: xft:PragmataPro Mono:pixelsize=20:antialias=false
 
 ! Fix font space
-URxvt*letterSpace: -1
+URxvt*letterSpace: -2
 
 ! Scrollbar
-URxvt.scrollStyle:          plain
-URxvt.scrollBar:            true
-URxvt*scrollBar_right:        true
-URxvt*scrollColor:        #000000
+URxvt*scrollBar:  false
+!URxvt.scrollStyle:          plain
+!URxvt.scrollBar:            true
+!URxvt*scrollBar_right:        true
+!URxvt*scrollColor:        #000000
 
 ! Perl extensions
 !URxvt.perl-ext-common:      default,matcher
@@ -54,62 +58,57 @@ URxvt.pointerBlank:         true
 !!Source http://github.com/altercation/solarized
 
 URxvt.perl-ext-common:      default,clipboard
-! ,url-select,keyboard-select
 
-! URxvt.url-select.launcher:  chromium
-! URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-e:           perl:keyboard-select:search
+
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
-! URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-! URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-! URxvt.meta8: false
-! URxvt.metaSendsEscape: true
-
-*background: #002b36
-*foreground: #657b83
+URxvt*background: #002b36
+URxvt*foreground: #657b83
 !!*fading: 40
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
+URxvt*fadeColor: #002b36
+URxvt*cursorColor: #93a1a1
+URxvt*pointerColorBackground: #586e75
+URxvt*pointerColorForeground: #93a1a1
 
 !! black dark/light
-*color0: #073642
-*color8: #002b36
+URxvt*color0: #073642
+URxvt*color8: #002b36
  
 !! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
+URxvt*color1: #dc322f
+URxvt*color9: #cb4b16
  
 !! green dark/light
-*color2: #859900
-*color10: #586e75
+URxvt*color2: #859900
+URxvt*color10: #586e75
  
 !! yellow dark/light
-*color3: #b58900
-*color11: #657b83
+URxvt*color3: #b58900
+URxvt*color11: #657b83
  
 !! blue dark/light
-*color4: #268bd2
-*color12: #839496
+URxvt*color4: #268bd2
+URxvt*color12: #839496
  
 !! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
+URxvt*color5: #d33682
+URxvt*color13: #6c71c4
  
 !! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
+URxvt*color6: #2aa198
+URxvt*color14: #93a1a1
  
 !! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+URxvt*color7: #eee8d5
+URxvt*color15: #fdf6e3
 
-XTerm*faceName: xft:PragmataPro:pixelsize=14
+XTerm*background: #002b36
+XTerm*foreground: #657b83
+XTerm*faceName: xft:PragmataPro:pixelsize=20
 XTerm*termName: xterm-256color
-
+XTerm*metaSendsEscape: true
