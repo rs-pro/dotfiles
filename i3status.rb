@@ -20,11 +20,36 @@ LED_MASKS = [
 Thread.abort_on_exception = true
 
 cmd = Cocaine::CommandLine.new('df', '-P -l -k :disk')
+#smart = Cocaine::CommandLine.new('sudo', "smartctl -A -d sat :disk | grep Temperature_Cels | awk '{ print $10 }'")
 smart = Cocaine::CommandLine.new('sudo', "hddtemp -q -n :disk")
 
 disks = {}
 
-IO.popen("i3status --config ~/.i3status.conf") do |io|
+# Thread.new do
+#   loop do
+#     disks.each_pair do |k, v|
+#       # next if !v.nil? && v == ''
+#       begin
+#         Timeout::timeout(5) do
+#           rval = cmd.run(disk: k.to_s)
+#           rval.split(/\r?\n/).each do |line|
+#             next unless line =~ /^(.+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(.+)\s+(.+)$/
+#             device = $1.strip.gsub(/[0-9]/, '')
+#             # puts smart.command(disk: device.to_s)
+#             temp = smart.run(disk: device.to_s).strip
+#             disks[k] = temp
+#           end
+#         end
+#       rescue Exception => e
+#         puts "#{e.class.name}: #{e.message}"
+#         puts e.backtrace.join("\n")
+#       end
+#     end
+#     sleep 120 unless disks.empty?
+#   end
+# end
+
+IO.popen("i3status --config ~/.i3/status.conf") do |io|
   loop do
     raw = io.gets
     next if raw.nil?
@@ -41,6 +66,22 @@ IO.popen("i3status --config ~/.i3status.conf") do |io|
       orig_data = Yajl.load(raw)
       orig_data.each do |d|
         next if d['full_text'].nil?
+	
+	
+# 	if d['name'] == 'disk_info'
+#           if disks[d['instance']].nil?
+#             disks[d['instance']] = '-'
+#           end
+#           temp = disks[d['instance']]
+#           if temp != '0'
+#             temp = temp.to_i if temp != '-'
+#             if temp != '-' && temp > 45
+#               d['color'] = '#FF0000'
+#             end
+#             d['full_text'] += ", #{temp}°"
+#           end
+#         end
+        
         d['full_text'].gsub!(': yes', '')
         d['full_text'].gsub!(': no', '')
       end
@@ -63,6 +104,8 @@ IO.popen("i3status --config ~/.i3status.conf") do |io|
           end
         end
         data.push({name: "tztime", full_text: Time.now.to_s})
+	# data.push({full_text: $unread.to_s, color: $unread > 0 ? '#FF0000' : '#00FF00'})
+
         print "," if comma
         puts Yajl.dump(data)
         sleep 0.2
