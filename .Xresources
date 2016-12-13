@@ -10,7 +10,12 @@
 
 Xft.antialias:  1
 Xft.autohint:   0
-Xft.dpi:        140
+
+Xft.dpi:        70
+XTerm*faceName: xft:PragmataPro:pixelsize=13
+URxvt*font: xft:PragmataPro Mono:pixelsize=13:antialias=false
+URxvt*boldFont: xft:PragmataPro Mono:pixelsize=13:antialias=false
+
 Xft.hinting:    1
 Xft.hintstyle:  hintfull
 Xft.rgba:       rgb
@@ -29,18 +34,16 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt*font: xft:PragmataPro Mono:pixelsize=20:antialias=false
-URxvt*boldFont: xft:PragmataPro Mono:pixelsize=20:antialias=false
 
 ! Fix font space
 URxvt*letterSpace: -2
 
 ! Scrollbar
-URxvt*scrollBar:  false
-!URxvt.scrollStyle:          plain
-!URxvt.scrollBar:            true
-!URxvt*scrollBar_right:        true
-!URxvt*scrollColor:        #000000
+! URxvt*scrollBar:  false
+URxvt.scrollStyle:          plain
+URxvt.scrollBar:            true
+URxvt*scrollBar_right:        true
+URxvt*scrollColor:        #000000
 
 ! Perl extensions
 !URxvt.perl-ext-common:      default,matcher
@@ -109,6 +112,5 @@ URxvt*color15: #fdf6e3
 
 XTerm*background: #002b36
 XTerm*foreground: #657b83
-XTerm*faceName: xft:PragmataPro:pixelsize=20
 XTerm*termName: xterm-256color
 XTerm*metaSendsEscape: true
