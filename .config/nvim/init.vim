@@ -8,7 +8,7 @@ endif
 
 call neobundle#begin(expand('~/.nvim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
- 
+
 "}}}
 
 " let g:NERDTreeDirArrows=0
@@ -20,9 +20,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 set autoread
 set updatetime=500
-au CursorHold * silent! checktime 
+au CursorHold * silent! checktime
 au FocusLost * silent! wa
-"au FileChangedShell * checktime 
+"au FileChangedShell * checktime
 
 set virtualedit=onemore
 
@@ -74,6 +74,7 @@ set foldmethod=syntax
 set foldlevelstart=100
 
 au BufRead,BufNewFile *.thor set filetype=ruby
+au BufRead,BufNewFile *.es6 set filetype=ruby
 
 " _ backups {{{
 set undodir=~/.nvim/tmp/undo/
@@ -129,6 +130,47 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
+
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'gregsexton/gitv'
+
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+
+NeoBundle 'godlygeek/tabular'
+
+"NeoBundle 'Shougo/denite.nvim'
+"map <C-p> :Deinte<CR>
+
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'terryma/vim-multiple-cursors'
+"NeoBundle 'ryanoasis/vim-devicons'
+
+NeoBundle 'moll/vim-node'
+NeoBundle 'mhinz/vim-startify'
+NeoBundle 'vim-scripts/YankRing.vim'
+map <Leader>y :call YRShow<CR>
+
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+
+NeoBundle 'mbbill/undotree'
+nnoremap <Leader>u :UndotreeToggle<cr>
+NeoBundle 'tpope/vim-eunuch'
+
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+NeoBundle 'mattn/webapi-vim'
+
+NeoBundle  'luochen1990/rainbow'
+let g:rainbow_active = 0
+
+NeoBundle 'thinca/vim-quickrun'
+
+NeoBundle  'Yggdroot/indentLine'
+
+"NeoBundle  'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"NeoBundle  'junegunn/fzf.vim'
 
 "NeoBundle 'stefanoverna/vim-i18n'
 "vmap <Leader>z :call I18nTranslateString()<CR>
@@ -205,7 +247,7 @@ nmap ¯ <C-w>s
 map <F2> "_dw
 " delete line without putting it to buffer
 map <F3> "_dd
-" delete without putting to buffer 
+" delete without putting to buffer
 map <F4> "_d
 map <F7> :%s/\r//g<cr>
 
@@ -241,16 +283,16 @@ NeoBundle 'nonsense/tomorrow-night-vim-theme'
 "}}}
 
 " NeoBundle end {{{
- 
+
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
- 
+
 call neobundle#end()
- 
+
 filetype plugin indent on
- 
+
 NeoBundleCheck
- 
+
 "}}}
 
 
@@ -258,7 +300,7 @@ NeoBundleCheck
   color Tomorrow-Night
   syntax on
 "}}}
- 
+
 "Plugin specific" {{{
   "NerdTree" {{{
     autocmd StdinReadPre * let s:std_in=1
