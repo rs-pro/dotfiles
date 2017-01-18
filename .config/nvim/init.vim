@@ -141,7 +141,15 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'godlygeek/tabular'
 
 "NeoBundle 'Shougo/denite.nvim'
-"map <C-p> :Deinte<CR>
+"map <Leader>d :Denite file buffer<CR>
+
+NeoBundle 'Shougo/unite.vim'
+map <Leader>d :Unite file buffer<CR>
+map <Leader>b :Unite buffer file<CR>
+
+NeoBundle 'Shougo/neoyank.vim'
+"map <Leader>y :Denite history/yank<CR>
+map <Leader>y :Unite history/yank<CR>
 
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -149,8 +157,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 
 NeoBundle 'moll/vim-node'
 NeoBundle 'mhinz/vim-startify'
-NeoBundle 'vim-scripts/YankRing.vim'
-map <Leader>y :call YRShow<CR>
+"NeoBundle 'vim-scripts/YankRing.vim'
+"map <Leader>y :call YRShow<CR>
 
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
@@ -316,4 +324,3 @@ NeoBundleCheck
     set number
   "}}}
 "}}}
-
