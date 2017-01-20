@@ -143,13 +143,13 @@ NeoBundle 'godlygeek/tabular'
 "NeoBundle 'Shougo/denite.nvim'
 "map <Leader>d :Denite file buffer<CR>
 
-NeoBundle 'Shougo/unite.vim'
-map <Leader>d :Unite file buffer<CR>
-map <Leader>b :Unite buffer file<CR>
+"NeoBundle 'Shougo/unite.vim'
+"map <Leader>d :Unite file buffer<CR>
+"map <Leader>b :Unite buffer file<CR>
 
-NeoBundle 'Shougo/neoyank.vim'
+"NeoBundle 'Shougo/neoyank.vim'
 "map <Leader>y :Denite history/yank<CR>
-map <Leader>y :Unite history/yank<CR>
+"map <Leader>y :Unite history/yank<CR>
 
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -175,7 +175,18 @@ let g:rainbow_active = 0
 
 NeoBundle 'thinca/vim-quickrun'
 
-NeoBundle  'Yggdroot/indentLine'
+"NeoBundle  'Yggdroot/indentLine'
+let g:indent_guides_default_mapping = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=line
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=background
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
+nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=236
+
 
 "NeoBundle  'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "NeoBundle  'junegunn/fzf.vim'
@@ -324,3 +335,6 @@ NeoBundleCheck
     set number
   "}}}
 "}}}
+
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=236
