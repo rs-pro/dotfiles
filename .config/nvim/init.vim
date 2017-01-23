@@ -167,6 +167,7 @@ nnoremap <Leader>u :UndotreeToggle<cr>
 NeoBundle 'tpope/vim-eunuch'
 
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'fatih/vim-go'
 
 NeoBundle 'mattn/webapi-vim'
 
