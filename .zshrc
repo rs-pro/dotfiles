@@ -90,6 +90,9 @@ export GEM_HOME=$HOME/.gem/ruby/2.4.0
 export GEM_ROOT=$HOME/.rubies/ruby-2.4.0/lib/ruby/gems/2.4.0
 export GEM_PATH=$HOME/.gem/ruby/2.4.0
 
+export GOPATH=/data/go
+export GOBIN=$GOPATH/bin
+
 export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin:/data/go/bin
 #export BUNDLE_PATH=$HOME/.gem/ruby/2.4.0
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
