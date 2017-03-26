@@ -74,7 +74,7 @@ set foldmethod=syntax
 set foldlevelstart=100
 
 au BufRead,BufNewFile *.thor set filetype=ruby
-au BufRead,BufNewFile *.es6 set filetype=ruby
+au BufRead,BufNewFile *.es6 set filetype=javascript
 
 " _ backups {{{
 set undodir=~/.nvim/tmp/undo/
