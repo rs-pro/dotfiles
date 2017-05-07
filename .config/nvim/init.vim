@@ -25,7 +25,7 @@ au FocusLost * silent! wa
 "au FileChangedShell * checktime
 
 set virtualedit=onemore
-
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set incsearch
 set hlsearch
 set smartcase
@@ -75,6 +75,7 @@ set foldlevelstart=100
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
+au BufRead,BufNewFile *.handlebars set filetype=html
 
 " _ backups {{{
 set undodir=~/.nvim/tmp/undo/
