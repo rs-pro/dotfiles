@@ -17,7 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "autocmd CursorMovedI * let CursorColumnI = col('.')
 "autocmd InsertLeave * call cursor(0, col('.')+1)
 "autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
-
+set list
 set autoread
 set updatetime=500
 au CursorHold * silent! checktime
