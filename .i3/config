@@ -223,4 +223,4 @@ exec --no-startup-id pa-applet
 exec --no-startup-id setxkbmap "us,ru" -option grp:caps_toggle
 # exec --no-startup-id unclutter -grab
 exec --no-startup-id blueman-applet
-
+exec --no-startup-id "/usr/bin/nohup /usr/lib/notification-daemon-1.0/notification-daemon &"
