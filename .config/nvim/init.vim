@@ -11,13 +11,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 "}}}
 
-" let g:NERDTreeDirArrows=0
+" Enable to see non-printable chars
+" set list
 
-"autocmd InsertEnter * let CursorColumnI = col('.')
-"autocmd CursorMovedI * let CursorColumnI = col('.')
-"autocmd InsertLeave * call cursor(0, col('.')+1)
-"autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
-set list
 set autoread
 set updatetime=500
 au CursorHold * silent! checktime
@@ -32,16 +28,6 @@ set smartcase
 set ignorecase
 set backspace=indent,eol,start
 
-"if &term =~ "xterm.*"
-  "let &t_ti = &t_ti . "\e[?1004h"
-  "let &t_te = "\e[?1004l" . &t_te
-  "nnoremap <silent> <ESC>[O <ESC><ESC>:wall<cr>
-  "nnoremap <silent> <ESC>[I <ESC>
-  "imap <silent> <ESC>[O <ESC><ESC>:wall<cr>
-  "imap <ESC>[I <ESC>
-  "nnoremap <Tab> <Esc>
-"endif
-"au FocusLost    * :silent! wall
 map <silent> <C-s> :wall<cr>
 imap <silent> <C-s> <esc>:wall<cr>
 
@@ -52,22 +38,8 @@ set showcmd
 nmap <C-e> :e#<CR>
 nnoremap <space> i <Esc>
 
-"if &term =~ "xterm\\|rxvt"
-  "let &t_SI = "\<Esc>]12;orange\x7"
-  "let &t_EI = "\<Esc>]12;red\x7"
-  "let &t_SI .= "\<Esc>[4 q"
-  "let &t_EI .= "\<Esc>[2 q"
-  "let &t_SI .= "\<Esc>[5 q"
-  "let &t_EI .= "\<Esc>[0 q"
-"endif
-
 let mapleader = "\\"
-"let maplocalleader = ","
 
-" runtime! python_setup.vim
-
-" noremap <silent> OH ^
-" imap <silent> OH <C-O><Home>
 noremap <silent> <Home> ^
 imap <silent> <Home> <C-O><Home>
 set foldmethod=syntax
@@ -91,8 +63,6 @@ set noswapfile
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'rking/ag.vim'
-" NeoBundle 'wincent/ferret'
-"NeoBundle 'wincent/loupe'
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -102,27 +72,9 @@ let g:airline_symbols.whitespace = "!"
 NeoBundle    'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
-"NeoBundle    'Shougo/neosnippet.vim'
-"NeoBundle    'Shougo/neosnippet-snippets'
-"NeoBundle    'flazz/vim-colorschemes'
-"NeoBundle     'airblade/vim-gitgutter'
-"NeoBundle     'myusuf3/numbers.vim'
-"NeoBundle     'jeetsukumaran/vim-markology'
-"NeoBundle     'nonsense/tomorrow-night-vim-theme'
-"NeoBundle    'honza/vim-snippets'
-"NeoBundle     'benmills/vimux'
-"NeoBundle     'vim-scripts/JSON.vim'
-"NeoBundle     'godlygeek/tabular'
 NeoBundle    'mileszs/ack.vim'
 NeoBundle     'nelstrom/vim-visual-star-search'
-"NeoBundle     'tpope/vim-vinegar'
 NeoBundle     'junegunn/vim-easy-align'
-"NeoBundle     'tommcdo/vim-lion'
-"NeoBundle     'edkolev/tmuxline.vim'
-"NeoBundle    'Shougo/unite.vim'
-"NeoBundle    'editorconfig/editorconfig-vim'
-" NeoBundle    'scrooloose/syntastic'
-"NeoBundle    'jaxbot/semantic-highlight'
 NeoBundle    'scrooloose/nerdtree'
 NeoBundle    'scrooloose/nerdcommenter'
 
@@ -139,23 +91,11 @@ NeoBundle 'gregsexton/gitv'
 
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
-
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'godlygeek/tabular'
-
-"NeoBundle 'Shougo/denite.nvim'
-"map <Leader>d :Denite file buffer<CR>
-
-"NeoBundle 'Shougo/unite.vim'
-"map <Leader>d :Unite file buffer<CR>
-"map <Leader>b :Unite buffer file<CR>
-
-"NeoBundle 'Shougo/neoyank.vim'
-"map <Leader>y :Denite history/yank<CR>
-"map <Leader>y :Unite history/yank<CR>
 
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'ryanoasis/vim-devicons'
 
 NeoBundle 'moll/vim-node'
 NeoBundle 'mhinz/vim-startify'
@@ -213,11 +153,7 @@ imap <S-Tab> <c-d>
 
 nmap <C-Tab> ==
 
-map <PageUp> <C-U>
-map <PageDown> <C-D>
-imap <PageUp> <C-O><C-U>
-imap <PageDown> <C-O><C-D>
-
+" Better split navigation
 noremap <M-h>  <C-w>h
 noremap <M-j>  <C-w>j
 noremap <M-k>  <C-w>k
@@ -280,11 +216,8 @@ command! Wa :wa
 map <leader>v :e ~/.config/nvim/init.vim<cr>
 map <leader>7 :e ~/.i3/config<cr>
 
-"map [5~ <C-U>
-"map [6~ <C-D>
-"imap [5~ <C-O><C-U>
-"imap [6~ <C-O><C-D>
 
+" Better page up-down
 map <PageUp> <C-U>
 map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
@@ -297,16 +230,9 @@ NeoBundle 'nonsense/tomorrow-night-vim-theme'
 "}}}
 
 " NeoBundle end {{{
-
-" You can specify revision/branch/tag.
-"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
 call neobundle#end()
-
 filetype plugin indent on
-
 NeoBundleCheck
-
 "}}}
 
 
