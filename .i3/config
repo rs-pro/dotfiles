@@ -43,9 +43,9 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+z exec krusader
 bindsym $mod+c exec chromium
 
-bindsym $mod+v exec printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs urxvt -e
-bindsym $mod+comma exec ls /data/ | dmenu | tr -d '\n' | xargs printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs urxvt -e
-bindsym $mod+period exec ls /media/d/ | dmenu | tr -d '\n' | xargs printf "nvim +'cd /media/d/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs urxvt -e
+bindsym $mod+v exec printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs xterm -e
+bindsym $mod+comma exec ls /data/ | dmenu | tr -d '\n' | xargs printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs xterm -e
+bindsym $mod+period exec ls /media/d/ | dmenu | tr -d '\n' | xargs printf "nvim +'cd /media/d/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs xterm -e
 
 bindsym $mod+u exec virtualbox --startvm cc
 bindsym Print exec deepin-screenshot
