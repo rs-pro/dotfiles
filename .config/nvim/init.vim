@@ -132,7 +132,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|public|log|_etc|node_modules|bower_components|node_modules|coverage|source_maps|tmp)$',
+  \ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
   \ 'file': '\v\.(exe|so|dll|log|pid)$',
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
