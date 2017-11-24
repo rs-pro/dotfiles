@@ -47,6 +47,7 @@ set foldlevelstart=100
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
+au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.handlebars set filetype=html
 
 " _ backups {{{
@@ -131,12 +132,12 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|public|log|_etc|node_modules|bower_components|coverage|source_maps|tmp)$',
+  \ 'dir':  '\v[\/](\.git|public|log|_etc|node_modules|bower_components|node_modules|coverage|source_maps|tmp)$',
   \ 'file': '\v\.(exe|so|dll|log|pid)$',
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_mruf_relative = 1
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 set mouse=a
 "set unnamedclip
