@@ -93,6 +93,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'posva/vim-vue'
 NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'Raimondi/delimitMate'
