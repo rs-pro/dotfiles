@@ -1,15 +1,21 @@
 " vim:fdm=marker
-"NeoBundle begin" {{{
-if has('vim_starting')
- set nocompatible
- set runtimepath+=~/.nvim/bundle/neobundle.vim/
- set runtimepath+=~/.nvim/
-endif
+" init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
+" mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 
-call neobundle#begin(expand('~/.nvim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-"}}}
+  set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
+  set runtimepath+=~/.nvim/
+  if dein#load_state('~/.nvim/repos/')
+    call dein#begin('~/.nvim/repos/')"
+    " Let dein manage dein
+    " Required:
+    call dein#add('~/.nvim/repos/github.com/Shougo/dein.vim')
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+   set nocompatible
+   endif
 
 " Enable to see non-printable chars
 " set list
@@ -61,69 +67,75 @@ set backup
 set noswapfile
 " _ }}}
 
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'rking/ag.vim'
+call dein#add('slim-template/vim-slim')
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('rking/ag.vim')
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.whitespace = "!"
-NeoBundle    'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+call dein#add('bling/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 
-NeoBundle    'mileszs/ack.vim'
-NeoBundle     'nelstrom/vim-visual-star-search'
-NeoBundle     'junegunn/vim-easy-align'
-NeoBundle    'scrooloose/nerdtree'
-NeoBundle    'scrooloose/nerdcommenter'
+call dein#add('mileszs/ack.vim')
+call dein#add('nelstrom/vim-visual-star-search')
+call dein#add('junegunn/vim-easy-align')
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/nerdcommenter')
 
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'
+call dein#add('tpope/vim-endwise')
+call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-unimpaired')
+call dein#add('vim-ruby/vim-ruby')
+call dein#add('tpope/vim-rails')
 let g:rails_no_abbreviations = 1
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'gregsexton/gitv'
+call dein#add('w0rp/ale')
 
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'posva/vim-vue'
-NeoBundle 'godlygeek/tabular'
+call dein#add('tpope/vim-fugitive')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('gregsexton/gitv')
 
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'terryma/vim-multiple-cursors'
+call dein#add('pangloss/vim-javascript')
+call dein#add('mxw/vim-jsx')
+call dein#add('leafgarland/typescript-vim')
+call dein#add('posva/vim-vue')
+call dein#add('godlygeek/tabular')
 
-NeoBundle 'moll/vim-node'
-NeoBundle 'mhinz/vim-startify'
-"NeoBundle 'vim-scripts/YankRing.vim'
-"map <Leader>y :call YRShow<CR>
+call dein#add('Raimondi/delimitMate')
+call dein#add('terryma/vim-multiple-cursors')
 
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+call dein#add('moll/vim-node')
+call dein#add('mhinz/vim-startify')
 
-NeoBundle 'mbbill/undotree'
+call dein#add('Shougo/denite.nvim')
+map <Leader>d :Denite<CR>
+
+call dein#add('bfredl/nvim-miniyank')
+map <Leader>y :Denite miniyank<CR>
+
+call dein#add('Xuyuanp/nerdtree-git-plugin')
+
+call dein#add('mbbill/undotree')
 nnoremap <Leader>u :UndotreeToggle<cr>
-NeoBundle 'tpope/vim-eunuch'
+call dein#add('tpope/vim-eunuch')
 
-NeoBundle 'bronson/vim-trailing-whitespace'
+call dein#add('bronson/vim-trailing-whitespace')
 
-NeoBundle 'mattn/webapi-vim'
+"call dein#add('mattn/webapi-vim')
 
-NeoBundle  'luochen1990/rainbow'
-let g:rainbow_active = 0
+"NeoBundle  'luochen1990/rainbow'
+"let g:rainbow_active = 0
 
-NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'thinca/vim-quickrun'
 
 let g:go_fmt_command = "goimports"
-NeoBundle 'fatih/vim-go'
+call dein#add('fatih/vim-go')
 
 "NeoBundle  'Yggdroot/indentLine'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+call dein#add('nathanaelkane/vim-indent-guides')
 
 "NeoBundle  'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "NeoBundle  'junegunn/fzf.vim'
@@ -138,14 +150,14 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_mruf_relative = 1
-
+"
 "https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders/22784889#22784889
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 "if executable('ag')
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "endif
 
-NeoBundle 'ctrlpvim/ctrlp.vim'
+call dein#add('ctrlpvim/ctrlp.vim')
 
 set mouse=a
 "set unnamedclip
@@ -234,15 +246,10 @@ imap <PageDown> <C-O><C-D>
 
 
 "Colors {{{
-"NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'nonsense/tomorrow-night-vim-theme'
+call dein#add('nonsense/tomorrow-night-vim-theme')
 "}}}
 
-" NeoBundle end {{{
-call neobundle#end()
 filetype plugin indent on
-NeoBundleCheck
-"}}}
 
 
 "Basic" {{{
