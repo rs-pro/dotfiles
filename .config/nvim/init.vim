@@ -1,7 +1,7 @@
 " vim:fdm=marker
 " init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
-
+" :call dein#install()
   set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
   set runtimepath+=~/.nvim/
   if dein#load_state('~/.nvim/repos/')
@@ -84,6 +84,27 @@ call dein#add('nelstrom/vim-visual-star-search')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('scrooloose/nerdtree')
 call dein#add('scrooloose/nerdcommenter')
+" vue support in nerdcommenter
+let g:ft = ''
+fu! NERDCommenter_before()
+    if &ft == 'vue'
+        let g:ft = 'vue'
+        let stack = synstack(line('.'), col('.'))
+        if len(stack) > 0
+            let syn = synIDattr((stack)[0], 'name')
+            if len(syn) > 0
+                let syn = tolower(syn)
+                exe 'setf '.syn
+            endif
+        endif
+    endif
+endfu
+fu! NERDCommenter_after()
+    if g:ft == 'vue'
+        setf vue
+        let g:ft = ''
+    endif
+endfu
 
 call dein#add('tpope/vim-endwise')
 call dein#add('tpope/vim-repeat')
