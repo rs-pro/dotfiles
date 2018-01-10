@@ -85,16 +85,21 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# export GEM_HOME=$HOME/.gem
-export GEM_HOME=$HOME/.gem/ruby/2.4.0
-export GEM_ROOT=$HOME/.rubies/ruby-2.4.0/lib/ruby/gems/2.4.0
-export GEM_PATH=$HOME/.gem/ruby/2.4.0
+
+export GEM_HOME=$HOME/.gem/ruby/2.5.0
+export GEM_ROOT=$HOME/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
+export GEM_PATH=$HOME/.gem/ruby/2.5.0:/home/gleb/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
+
+#export GEM_HOME=$HOME/.gem
+#export GEM_PATH=$HOME/.gem
+PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin:/data/go/bin
 
 export GOPATH=/data/go
 export GOBIN=$GOPATH/bin
 
-export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin:/data/go/bin
-#export BUNDLE_PATH=$HOME/.gem/ruby/2.4.0
+#PATH=$PATH:$HOME/.gem/bin:/data/go/bin
+#export BUNDLE_PATH=$HOME/.gem
+
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 zmodload zsh/terminfo
