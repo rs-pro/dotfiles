@@ -2,6 +2,7 @@
 " init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
+
   set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
   set runtimepath+=~/.nvim/
   if dein#load_state('~/.nvim/repos/')
@@ -175,7 +176,8 @@ let g:ctrlp_mruf_relative = 1
 "https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders/22784889#22784889
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 "if executable('ag')
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'cd %s && ag . -l --nocolor -g ""'
 "endif
 
 call dein#add('ctrlpvim/ctrlp.vim')
