@@ -38,6 +38,8 @@ bindsym $mod+x kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id dmenu_run
+# Faster https://github.com/enkore/j4-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 #bindsym $mod+y exec deadbeef
 bindsym $mod+z exec krusader
