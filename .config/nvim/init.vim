@@ -115,6 +115,9 @@ call dein#add('tpope/vim-rails')
 let g:rails_no_abbreviations = 1
 
 call dein#add('w0rp/ale')
+" for ale
+autocmd BufRead,BufNewFile * setlocal signcolumn=yes
+
 
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
