@@ -114,3 +114,7 @@ URxvt*color14: #93a1a1
 !! white dark/light
 URxvt*color7: #eee8d5
 URxvt*color15: #fdf6e3
+
+!! ctrl-arrow to move word
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
