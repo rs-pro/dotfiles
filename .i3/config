@@ -215,5 +215,5 @@ exec --no-startup-id xset r rate 200 30
 exec --no-startup-id pa-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id setxkbmap "us,ru" -option grp:caps_toggle
-exec --no-startup-id "/usr/bin/nohup /usr/lib/notification-daemon-1.0/notification-daemon &"
+#exec --no-startup-id "/usr/bin/nohup /usr/lib/notification-daemon-1.0/notification-daemon &"
 exec --no-startup-id "/usr/bin/nohup /usr/lib/xfce4/notifyd/xfce4-notifyd &"
