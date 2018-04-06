@@ -58,3 +58,12 @@ end
 function ggu
   go get -u $argv
 end
+
+function gp
+  git pull --rebase
+end
+
+function grm
+  go run main.go $argv
+end
+
