@@ -4,6 +4,7 @@
 # fisher install attilagyorffy/plugin-bundler
 # fisher install oh-my-fish/plugin-archlinux
 # fisher install oh-my-fish/plugin-rails
+# fisher install oh-my-fish/theme-bobthefish
 
 set fish_greeting ""
 
