@@ -69,3 +69,7 @@ function grm
   go run main.go $argv
 end
 
+if ssh-add -l > /dev/null
+else
+  ssh-add
+end
