@@ -66,6 +66,10 @@ function gp
   git pull --rebase
 end
 
+function gco
+  git checkout $argv
+end
+
 function grm
   go run main.go $argv
 end
