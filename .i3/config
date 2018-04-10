@@ -41,7 +41,8 @@ bindsym $mod+x kill
 # Faster https://github.com/enkore/j4-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 # includes normal binaries
-bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --dmenu=\\"(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -fn 'PragmataPro Mono-12'\\""
+# bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --dmenu=\\"(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -fn 'PragmataPro Mono-12'\\""
+bindsym $mod+d exec --no-startup-id "SHELL=/bin/zsh j4-dmenu-desktop --dmenu=\\"(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -fn 'PragmataPro Mono-12' \\""
 
 #bindsym $mod+y exec deadbeef
 bindsym $mod+z exec krusader
