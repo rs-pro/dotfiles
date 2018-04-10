@@ -41,6 +41,11 @@ bindsym $mod+x kill
 # Faster https://github.com/enkore/j4-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 # includes normal binaries
+
+# fish doesnt work
+#bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --dmenu=\\"cat | read -z dapps ; set dbins (stest -flx echo $PATH | tr : ' ' ); set dall (string join \n $dapps $dbins); echo $dall | dmenu -fn 'PragmataPro Mono-12' \\" "
+# see: https://github.com/fish-shell/fish-shell/issues/3805 https://github.com/fish-shell/fish-shell/issues/2980 
+
 # bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --dmenu=\\"(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -fn 'PragmataPro Mono-12'\\""
 bindsym $mod+d exec --no-startup-id "SHELL=/bin/zsh j4-dmenu-desktop --dmenu=\\"(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -fn 'PragmataPro Mono-12' \\""
 
