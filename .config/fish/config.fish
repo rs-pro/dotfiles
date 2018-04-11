@@ -31,7 +31,16 @@ function yu
 end
 
 function rdm
-  rake db:migrate
+  rake db:migrate $argv
+end
+function rdr
+  rake db:rollback $argv
+end
+function cpd
+  cap production deploy
+end
+function csd
+  cap staging deploy
 end
 
 function rds
