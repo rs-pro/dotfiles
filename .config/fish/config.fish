@@ -83,6 +83,10 @@ function grm
   go run main.go $argv
 end
 
+function yain
+  yaourt -S $argv
+end
+
 if ssh-add -l > /dev/null
 else
   ssh-add
