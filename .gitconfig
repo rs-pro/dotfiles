@@ -1,0 +1,9 @@
+[user]
+	email = glebtv@gmail.com
+	name = Gleb Tv
+
+[push]
+	default = simple
+
+[url "git@rscz.ru:"]
+	insteadOf = https://rscz.ru/
