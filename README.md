@@ -1,10 +1,16 @@
 
-## ZSH
+## Basic info
 
-https://github.com/robbyrussell/oh-my-zsh
+Fish Shell, i3, neovim
 
-## VIM
+## How to use
 
-### Vundle
+You probably can't clone it as your ~ is not empty. Do this instead:
 
-https://github.com/gmarik/Vundle.vim
+```
+git init
+git remote add origin git@github.com:rs-pro/dotfiles.git
+git pull origin master
+git branch --set-upstream-to=origin/master master
+git pull
+```
