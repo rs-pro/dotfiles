@@ -214,7 +214,7 @@ bar {
   hidden_state hide
   mode hide
   modifier Mod3
-  status_command /home/gleb/i3status.rb
+  status_command /data/go/bin/custom_barista
   #tray_output HDMI-0
 }
 
