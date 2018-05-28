@@ -201,12 +201,14 @@ mode "resize" {
 }
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym $mod+F5 exec xbacklight -dec 20 # decrease screen brightness
+bindsym $mod+F6 exec xbacklight -inc 20 # increase screen brightness
 
 # Keyboard backlight controls
-bindsym $mod+f3 exec ~/.i3/kbdbacklight.sh down
-bindsym $mod+f4 exec ~/.i3/kbdbacklight.sh up
+bindsym $mod+F3 exec ~/.i3/kbdbacklight.sh down
+bindsym $mod+F4 exec ~/.i3/kbdbacklight.sh up
 
 bindsym $mod+i bar mode toggle
 bindsym $mod+r mode "resize"
