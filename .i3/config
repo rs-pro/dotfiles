@@ -204,6 +204,10 @@ mode "resize" {
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
+# Keyboard backlight controls
+bindsym $mod+f3 exec ~/.i3/kbdbacklight.sh down
+bindsym $mod+f4 exec ~/.i3/kbdbacklight.sh up
+
 bindsym $mod+i bar mode toggle
 bindsym $mod+r mode "resize"
 bindsym $mod+q exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
