@@ -3,20 +3,20 @@
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
 
-  set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
-  set runtimepath+=~/.nvim/
-  if dein#load_state('~/.nvim/repos/')
-    call dein#begin('~/.nvim/repos/')"
-    " Let dein manage dein
-    " Required:
-    call dein#add('~/.nvim/repos/github.com/Shougo/dein.vim')
-    call dein#add('Shougo/deoplete.nvim')
-    if !has('nvim')
-      call dein#add('roxma/nvim-yarp')
-      call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
-   set nocompatible
-   endif
+set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.nvim/
+if dein#load_state('~/.nvim/')
+  call dein#begin('~/.nvim/')"
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.nvim/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+ set nocompatible
+endif
 
 " Enable to see non-printable chars
 " set list
@@ -68,6 +68,7 @@ set backup
 set noswapfile
 " _ }}}
 
+"call dein#add('digitaltoad/vim-pug')
 call dein#add('slim-template/vim-slim')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('rking/ag.vim')
@@ -124,8 +125,8 @@ autocmd BufRead,BufNewFile * setlocal signcolumn=yes
 
 
 call dein#add('tpope/vim-fugitive')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('gregsexton/gitv')
+"call dein#add('airblade/vim-gitgutter')
+"call dein#add('gregsexton/gitv')
 
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
