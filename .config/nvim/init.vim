@@ -71,7 +71,13 @@ set noswapfile
 "call dein#add('digitaltoad/vim-pug')
 call dein#add('slim-template/vim-slim')
 call dein#add('kchmck/vim-coffee-script')
-call dein#add('rking/ag.vim')
+
+call dein#add('mileszs/ack.vim')
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -81,7 +87,7 @@ let g:airline_symbols.whitespace = "!"
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 
-call dein#add('mileszs/ack.vim')
+"call dein#add('mileszs/ack.vim')
 call dein#add('nelstrom/vim-visual-star-search')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('scrooloose/nerdtree')
@@ -190,8 +196,11 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 " bash \ zsh
 " let g:ctrlp_user_command = 'cd %s && ag . -l --nocolor -g ""'
 " fish:
-let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor -g ""'
-
+let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor --depth 5 -g ""'
+" Unset cap of 10,000 files so we find everything
+let g:ctrlp_working_path_mode=''
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=100
 "endif
 
 call dein#add('ctrlpvim/ctrlp.vim')
@@ -284,13 +293,15 @@ imap <PageDown> <C-O><C-D>
 
 "Colors {{{
 call dein#add('nonsense/tomorrow-night-vim-theme')
+call dein#add('glebtv/onehalf')
 "}}}
 
 filetype plugin indent on
 
 
 "Basic" {{{
-  color Tomorrow-Night
+  "color Tomorrow-Night
+  color onehalflight
   syntax on
 "}}}
 
