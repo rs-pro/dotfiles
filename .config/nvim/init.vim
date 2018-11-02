@@ -168,7 +168,12 @@ call dein#add('bronson/vim-trailing-whitespace')
 "NeoBundle 'thinca/vim-quickrun'
 
 let g:go_fmt_command = "goimports"
+"let g:go_auto_type_info = 1
+let g:go_info_mode = 'guru'
+
 call dein#add('fatih/vim-go')
+"call dein#add('majutsushi/tagbar')
+"nmap <F8> :TagbarToggle<CR>
 
 "NeoBundle  'Yggdroot/indentLine'
 call dein#add('nathanaelkane/vim-indent-guides')
@@ -300,8 +305,8 @@ filetype plugin indent on
 
 
 "Basic" {{{
-  "color Tomorrow-Night
-  color onehalflight
+  color Tomorrow-Night
+  "color onehalflight
   syntax on
 "}}}
 
