@@ -1,10 +1,10 @@
 # curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-# fisher install gin0606/fish-bundler-aliases
-# fisher install tuvistavie/fish-ssh-agent
-# fisher install attilagyorffy/plugin-bundler
-# fisher install oh-my-fish/plugin-archlinux
-# fisher install oh-my-fish/plugin-rails
-# fisher install oh-my-fish/theme-bobthefish
+# fisher add gin0606/fish-bundler-aliases
+# fisher add tuvistavie/fish-ssh-agent
+# fisher add attilagyorffy/plugin-bundler
+# fisher add oh-my-fish/plugin-archlinux
+# fisher add oh-my-fish/plugin-rails
+# fisher add oh-my-fish/theme-bobthefish
 
 set fish_greeting ""
 
