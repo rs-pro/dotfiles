@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/gleb/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -88,7 +88,7 @@ export EDITOR='vim'
 
 export GEM_HOME=$HOME/.gem/ruby/2.5.0
 export GEM_ROOT=$HOME/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
-export GEM_PATH=$HOME/.gem/ruby/2.5.0:/home/gleb/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
+export GEM_PATH=$HOME/.gem/ruby/2.5.0:/$HOME/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
 
 #export GEM_HOME=$HOME/.gem
 #export GEM_PATH=$HOME/.gem
