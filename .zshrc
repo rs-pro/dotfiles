@@ -86,13 +86,12 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export GEM_HOME=$HOME/.gem/ruby/2.5.0
-export GEM_ROOT=$HOME/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
-export GEM_PATH=$HOME/.gem/ruby/2.5.0:/$HOME/.rubies/ruby-2.5.0/lib/ruby/gems/2.5.0
+export GEM_HOME=$HOME/.gem/ruby/2.6.0
+export GEM_PATH=$HOME/.gem/ruby/2.6.0:/home/gleb/.rubies/ruby-2.6.0/lib/ruby/gems/2.6.0
 
 #export GEM_HOME=$HOME/.gem
 #export GEM_PATH=$HOME/.gem
-PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin:/data/go/bin
+PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin:/data/go/bin
 
 export GOPATH=/data/go
 export GOBIN=$GOPATH/bin
