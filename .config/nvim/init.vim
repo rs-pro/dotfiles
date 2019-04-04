@@ -182,6 +182,10 @@ call dein#add('nathanaelkane/vim-indent-guides')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
+" pacin python-neovim 
+" :UpdateRemotePlugins
+" restart neovim
+
 call dein#add('Shougo/denite.nvim')
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
