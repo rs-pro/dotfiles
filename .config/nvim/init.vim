@@ -318,7 +318,7 @@ filetype plugin indent on
 
 "Basic" {{{
   color Tomorrow-Night
-  "color onehalflight
+  color onehalf
   syntax on
 "}}}
 

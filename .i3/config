@@ -59,7 +59,7 @@ bindsym $mod+c exec chromium
 
 bindsym $mod+v exec printf "+'cd /data/%s' +NERDTree" | xargs nvim-qt
 bindsym $mod+comma exec ls /data/ | dmenu -fn 'PragmataPro Mono-12' | tr -d '\n' | xargs printf "+'cd /data/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
-bindsym $mod+period exec ls /hd2/ | dmenu -fn 'PragmataPro Mono-12'| tr -d '\n' | xargs printf "+'cd /hd2/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
+bindsym $mod+period exec ls /media/d/ | dmenu -fn 'PragmataPro Mono-12'| tr -d '\n' | xargs printf "+'cd /media/d/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
 bindsym $mod+m exec ls /data/go/src/rscz.ru/ | dmenu -fn 'PragmataPro Mono-12' | tr -d '\n' | xargs printf "+'cd /data/go/src/rscz.ru/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
 bindsym $mod+slash exec ls /data/go/src/github.com/ | dmenu -fn 'PragmataPro Mono-12' | tr -d '\n' | xargs printf "+'cd /data/go/src/github.com/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
 
