@@ -146,9 +146,6 @@ call dein#add('terryma/vim-multiple-cursors')
 call dein#add('moll/vim-node')
 call dein#add('mhinz/vim-startify')
 
-call dein#add('Shougo/denite.nvim')
-map <Leader>d :Denite<CR>
-
 call dein#add('bfredl/nvim-miniyank')
 map <Leader>y :Denite miniyank<CR>
 
@@ -185,15 +182,30 @@ call dein#add('nathanaelkane/vim-indent-guides')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
-  \ 'file': '\v\.(exe|so|dll|log|pid)$',
-  \ }
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_mruf_relative = 1
+" pacin python-neovim 
+" :UpdateRemotePlugins
+" restart neovim
+
+call dein#add('Shougo/denite.nvim')
+call denite#custom#var('file/rec', 'command',
+	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+map <C-p> :Denite file/rec<CR>
+call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
+call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
+
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
+  "\ 'file': '\v\.(exe|so|dll|log|pid)$',
+  "\ }
+
+"let g:ctrlp_match_window = 'max:50,results:50'
+"let g:ctrlp_funky_syntax_highlight = 1
+"let g:ctrlp_mruf_relative = 1
 "
 "https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders/22784889#22784889
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " use ag for faster ctrlp
 "if executable('ag')
@@ -201,14 +213,14 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 " bash \ zsh
 " let g:ctrlp_user_command = 'cd %s && ag . -l --nocolor -g ""'
 " fish:
-let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor --depth 5 -g ""'
+"let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor --depth 5 -g ""'
 " Unset cap of 10,000 files so we find everything
-let g:ctrlp_working_path_mode=''
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=100
+"let g:ctrlp_working_path_mode=''
+"let g:ctrlp_max_files=0
+"let g:ctrlp_max_depth=100
 "endif
 
-call dein#add('ctrlpvim/ctrlp.vim')
+"call dein#add('ctrlpvim/ctrlp.vim')
 
 set mouse=a
 "set unnamedclip
