@@ -138,10 +138,10 @@ call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('leafgarland/typescript-vim')
 call dein#add('posva/vim-vue')
-call dein#add('godlygeek/tabular')
+"call dein#add('godlygeek/tabular')
 
 call dein#add('Raimondi/delimitMate')
-call dein#add('terryma/vim-multiple-cursors')
+"call dein#add('terryma/vim-multiple-cursors')
 
 call dein#add('moll/vim-node')
 call dein#add('mhinz/vim-startify')
@@ -153,17 +153,8 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 call dein#add('mbbill/undotree')
 nnoremap <Leader>u :UndotreeToggle<cr>
-" causes error
-"call dein#add('tpope/vim-eunuch')
 
 call dein#add('bronson/vim-trailing-whitespace')
-
-"call dein#add('mattn/webapi-vim')
-
-"NeoBundle  'luochen1990/rainbow'
-"let g:rainbow_active = 0
-
-"NeoBundle 'thinca/vim-quickrun'
 
 let g:go_fmt_command = "goimports"
 "let g:go_auto_type_info = 1
@@ -173,13 +164,10 @@ call dein#add('fatih/vim-go')
 "call dein#add('majutsushi/tagbar')
 "nmap <F8> :TagbarToggle<CR>
 
-"NeoBundle  'Yggdroot/indentLine'
-call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('Yggdroot/indentLine')
+"call dein#add('nathanaelkane/vim-indent-guides')
 
-"NeoBundle  'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"NeoBundle  'junegunn/fzf.vim'
-
-"NeoBundle 'stefanoverna/vim-i18n'
+"call dein#add('stefanoverna/vim-i18n')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
@@ -187,15 +175,40 @@ call dein#add('nathanaelkane/vim-indent-guides')
 " :UpdateRemotePlugins
 " restart neovim
 
-call dein#add('glebtv/denite.nvim', { 'rev': '1.2' })
+"call dein#add('glebtv/denite.nvim', { 'rev': '1.2' })
+"call denite#custom#var('file/rec', 'command',
+	"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"map <C-p> :Denite file/rec<CR>
+"call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+"call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+"call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
+"call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
+
+"Ctrl+P {{{
+
+call dein#add('Shougo/denite.nvim')
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-map <C-p> :Denite file/rec<CR>
-call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+endfunction
 
+function! s:denite_filter_my_settings() abort
+  inoremap <silent><buffer> <C-p> <C-Up>
+  inoremap <silent><buffer> <C-n> <C-Down>
+  inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+  inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  inoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+endfunction
+augroup DENITE
+    autocmd!
+    autocmd FileType denite call s:denite_my_settings()
+    autocmd FileType denite-filter call s:denite_filter_my_settings()
+augroup end
+map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
+
+"}}}
 
 set mouse=a
 "set unnamedclip
