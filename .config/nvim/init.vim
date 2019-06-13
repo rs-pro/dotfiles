@@ -183,36 +183,18 @@ call dein#add('nathanaelkane/vim-indent-guides')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
-" pacin python-neovim 
+" pacin python-neovim
 " :UpdateRemotePlugins
 " restart neovim
 
-call dein#add('Shougo/denite.nvim')
+call dein#add('glebtv/denite.nvim', { 'rev': '1.2' })
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-map <C-p> :Denite file/rec -start-filter -post-action=open<CR>
-
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-endfunction
-
-function! s:denite_filter_my_settings() abort
-  inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-  inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-  inoremap <silent><buffer> <Esc> <Esc><C-w>q<C-w>q
-  imap <silent><buffer> <CR> <Esc><C-w><CR><CR><CR>
-  inoremap <silent><buffer> <C-p> <C-Up>
-  inoremap <silent><buffer> <C-n> <C-Down>
-endfunction
-
-augroup DENITE
-    autocmd!
-    autocmd FileType denite call s:denite_my_settings()
-    autocmd FileType denite-filter call s:denite_filter_my_settings()
-augroup end
-
-map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
-
+map <C-p> :Denite file/rec<CR>
+call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
+call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
 
 
 set mouse=a
