@@ -153,7 +153,8 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 call dein#add('mbbill/undotree')
 nnoremap <Leader>u :UndotreeToggle<cr>
-call dein#add('tpope/vim-eunuch')
+" causes error
+"call dein#add('tpope/vim-eunuch')
 
 call dein#add('bronson/vim-trailing-whitespace')
 
@@ -189,38 +190,30 @@ call dein#add('nathanaelkane/vim-indent-guides')
 call dein#add('Shougo/denite.nvim')
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-map <C-p> :Denite file/rec<CR>
-call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
+map <C-p> :Denite file/rec -start-filter -post-action=open<CR>
 
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
-  "\ 'file': '\v\.(exe|so|dll|log|pid)$',
-  "\ }
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+endfunction
 
-"let g:ctrlp_match_window = 'max:50,results:50'
-"let g:ctrlp_funky_syntax_highlight = 1
-"let g:ctrlp_mruf_relative = 1
-"
-"https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders/22784889#22784889
-"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+function! s:denite_filter_my_settings() abort
+  inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+  inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+  inoremap <silent><buffer> <Esc> <Esc><C-w>q<C-w>q
+  imap <silent><buffer> <CR> <Esc><C-w><CR><CR><CR>
+  inoremap <silent><buffer> <C-p> <C-Up>
+  inoremap <silent><buffer> <C-n> <C-Down>
+endfunction
 
-" use ag for faster ctrlp
-"if executable('ag')
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" bash \ zsh
-" let g:ctrlp_user_command = 'cd %s && ag . -l --nocolor -g ""'
-" fish:
-"let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor --depth 5 -g ""'
-" Unset cap of 10,000 files so we find everything
-"let g:ctrlp_working_path_mode=''
-"let g:ctrlp_max_files=0
-"let g:ctrlp_max_depth=100
-"endif
+augroup DENITE
+    autocmd!
+    autocmd FileType denite call s:denite_my_settings()
+    autocmd FileType denite-filter call s:denite_filter_my_settings()
+augroup end
 
-"call dein#add('ctrlpvim/ctrlp.vim')
+map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
+
+
 
 set mouse=a
 "set unnamedclip
