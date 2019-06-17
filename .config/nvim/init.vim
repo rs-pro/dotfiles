@@ -20,7 +20,7 @@ endif
 
 " Enable to see non-printable chars
 " set list
-
+set conceallevel=0
 set autoread
 set updatetime=500
 au CursorHold * silent! checktime

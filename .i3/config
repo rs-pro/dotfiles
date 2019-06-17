@@ -226,6 +226,7 @@ bar {
 
 exec --no-startup-id ~/.screenlayout/arandr.sh
 exec --no-startup-id xscreensaver -no-splash
+exec --no-startup-id ~/xmodmap.sh
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id xset r rate 200 30
