@@ -20,7 +20,6 @@ endif
 
 " Enable to see non-printable chars
 " set list
-set conceallevel=0
 set autoread
 set updatetime=500
 au CursorHold * silent! checktime
@@ -55,6 +54,9 @@ imap <silent> <kHome> <C-O><Home>
 set foldmethod=syntax
 set foldlevelstart=100
 
+call dein#add("elzr/vim-json")
+let g:vim_json_syntax_conceal = 0
+au BufRead,BufNewFile *.json set conceallevel=0
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.ts set filetype=typescript
