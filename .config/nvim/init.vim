@@ -49,6 +49,9 @@ let mapleader = "\\"
 
 noremap <silent> <Home> ^
 imap <silent> <Home> <C-O><Home>
+noremap <silent> <kHome> ^
+imap <silent> <kHome> <C-O><Home>
+
 set foldmethod=syntax
 set foldlevelstart=100
 
