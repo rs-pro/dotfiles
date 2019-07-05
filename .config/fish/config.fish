@@ -10,7 +10,7 @@ set fish_greeting ""
 
 set -x EDITOR 'nvim'
 set -x GEM_HOME $HOME/.gem/ruby/2.6.0
-set -x GEM_PATH $HOME/.gem/ruby/2.6.0 $GEM_PATH /usr/lib/ruby/gems/2.6.0
+# set -x GEM_PATH $HOME/.gem/ruby/2.6.0 $GEM_PATH /usr/lib/ruby/gems/2.6.0
 
 set -x GOPATH /data/go
 set -x GOBIN $GOPATH/bin
