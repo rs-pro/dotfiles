@@ -59,9 +59,7 @@ URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher,clipboard
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          /usr/bin/chromium
+URxvt.perl-ext-common:      default,clipboard
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
@@ -71,9 +69,6 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
 URxvt.meta8: false
 ! URxvt.metaSendsEscape: true
-
-URxvt*background: #262626
-URxvt*foreground: #657b83
 
 URxvt*background: #262626
 URxvt*foreground: #657b83
