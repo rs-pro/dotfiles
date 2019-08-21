@@ -330,3 +330,8 @@ filetype plugin indent on
     set number
   "}}}
 "}}}
+
+function! DirTitle()
+  let &titlestring=fnamemodify(getcwd(), ':t')
+  set title
+endfunction
