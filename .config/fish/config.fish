@@ -20,7 +20,8 @@ set -x GOBIN $GOPATH/bin
 set -x PATH $PATH $HOME/.gem/ruby/2.6.0/bin
 set -x PATH $PATH /data/go/bin
 
-set -x ANDROID_HOME /home/gleb/Android/Sdk
+set -x ANDROID_HOME $HOME/Android/Sdk
+set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/platform-tools:$PATH
 set -x PATH $PATH $ANDROID_HOME/tools:$PATH
 
