@@ -189,56 +189,56 @@ call dein#add('Yggdroot/indentLine')
 "Ctrl+P {{{
 
 call dein#add('Shougo/denite.nvim')
-call denite#custom#var('file/rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-function! s:denite_my_settings() abort
-nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-endfunction
+"call denite#custom#var('file/rec', 'command',
+"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"function! s:denite_my_settings() abort
+"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"endfunction
 
-function! s:denite_filter_my_settings() abort
-inoremap <silent><buffer> <C-p> <C-Up>
-inoremap <silent><buffer> <C-n> <C-Down>
-inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-inoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
-endfunction
-augroup DENITE
-  autocmd!
-  autocmd FileType denite call s:denite_my_settings()
-  autocmd FileType denite-filter call s:denite_filter_my_settings()
-augroup end
-map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
+"function! s:denite_filter_my_settings() abort
+"inoremap <silent><buffer> <C-p> <C-Up>
+"inoremap <silent><buffer> <C-n> <C-Down>
+"inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+"inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+"inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"inoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+"endfunction
+"augroup DENITE
+  "autocmd!
+  "autocmd FileType denite call s:denite_my_settings()
+  "autocmd FileType denite-filter call s:denite_filter_my_settings()
+"augroup end
+"map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
 
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', 'node_modules/', '__pycache__/', 'venv/'])
+"call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', 'node_modules/', '__pycache__/', 'venv/'])
 
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
+"call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
 
-map <C-d> :Denite -start-filter file/rec <CR>
+"map <C-d> :Denite -start-filter file/rec <CR>
 "call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
 "call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
 "call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
 "call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
 
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-nnoremap <silent><buffer><expr> q denite#do_map('quit')
-nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+"autocmd FileType denite call s:denite_my_settings()
+"function! s:denite_my_settings() abort
+"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+"nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+"nnoremap <silent><buffer><expr> q denite#do_map('quit')
+"nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+"nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
 
-endfunction
+"endfunction
 
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-inoremap <silent><buffer><expr> <Down> denite#do_map('move_to_next_line')
-inoremap <silent><buffer><expr> <Up> denite#do_map('move_to_previous_line')
-inoremap <silent><buffer><expr> <C-p> denite#do_map('assign_previous_text')
-inoremap <silent><buffer><expr> <C-n> denite#do_map('assign_next_text')
-endfunction
+"autocmd FileType denite-filter call s:denite_filter_my_settings()
+"function! s:denite_filter_my_settings() abort
+"inoremap <silent><buffer><expr> <Down> denite#do_map('move_to_next_line')
+"inoremap <silent><buffer><expr> <Up> denite#do_map('move_to_previous_line')
+"inoremap <silent><buffer><expr> <C-p> denite#do_map('assign_previous_text')
+"inoremap <silent><buffer><expr> <C-n> denite#do_map('assign_next_text')
+"endfunction
 
 call dein#add('bfredl/nvim-miniyank')
 map <Leader>y :Denite miniyank<CR>
