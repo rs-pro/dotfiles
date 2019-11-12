@@ -248,7 +248,7 @@ map <Leader>y :Denite miniyank<CR>
 "set rtp+=/usr/local/opt/fzf
 call dein#add('junegunn/fzf')
 call dein#add('junegunn/fzf.vim')
-map <C-[> :FZF<CR>
+map <C-k> :FZF<CR>
 map <C-p> :GFiles<CR>
 
 " call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -295,7 +295,7 @@ imap <S-Tab> <c-d>
 
 nmap <C-Tab> ==
 
-noremap <C-u> <C-i>
+noremap <C-0> <C-i>
 
 " Better split navigation
 noremap <M-h>  <C-w>h
