@@ -18,8 +18,6 @@ set -x GOBIN $GOPATH/bin
 set -x PATH $PATH $HOME/.gem/ruby/2.6.0/bin
 set -x PATH $PATH /data/go/bin
 
-set -x GO111MODULE on
-
 function ll
   ls --human-readable -l $argv
 end

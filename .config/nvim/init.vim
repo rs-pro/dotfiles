@@ -6,21 +6,20 @@
 set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
 set runtimepath+=~/.nvim/
 if dein#load_state('~/.nvim/')
-  call dein#begin('~/.nvim/')"
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.nvim/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
- set nocompatible
+call dein#begin('~/.nvim/')"
+" Let dein manage dein
+" Required:
+call dein#add('~/.nvim/repos/github.com/Shougo/dein.vim')
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
+set nocompatible
 endif
 
 " Enable to see non-printable chars
 " set list
-
 set autoread
 set updatetime=500
 au CursorHold * silent! checktime
@@ -49,9 +48,15 @@ let mapleader = "\\"
 
 noremap <silent> <Home> ^
 imap <silent> <Home> <C-O><Home>
+noremap <silent> <kHome> ^
+imap <silent> <kHome> <C-O><Home>
+
 set foldmethod=syntax
 set foldlevelstart=100
 
+call dein#add("elzr/vim-json")
+let g:vim_json_syntax_conceal = 0
+au BufRead,BufNewFile *.json set conceallevel=0
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.ts set filetype=typescript
@@ -68,7 +73,7 @@ set backup
 set noswapfile
 " _ }}}
 
-"call dein#add('digitaltoad/vim-pug')
+call dein#add('digitaltoad/vim-pug')
 call dein#add('slim-template/vim-slim')
 call dein#add('kchmck/vim-coffee-script')
 
@@ -81,7 +86,7 @@ cnoreabbrev AG Ack
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+let g:airline_symbols = {}
 endif
 let g:airline_symbols.whitespace = "!"
 call dein#add('bling/vim-airline')
@@ -95,23 +100,23 @@ call dein#add('scrooloose/nerdcommenter')
 " vue support in nerdcommenter
 let g:ft = ''
 fu! NERDCommenter_before()
-    if &ft == 'vue'
-        let g:ft = 'vue'
-        let stack = synstack(line('.'), col('.'))
-        if len(stack) > 0
-            let syn = synIDattr((stack)[0], 'name')
-            if len(syn) > 0
-                let syn = tolower(syn)
-                exe 'setf '.syn
-            endif
-        endif
-    endif
+  if &ft == 'vue'
+      let g:ft = 'vue'
+      let stack = synstack(line('.'), col('.'))
+      if len(stack) > 0
+          let syn = synIDattr((stack)[0], 'name')
+          if len(syn) > 0
+              let syn = tolower(syn)
+              exe 'setf '.syn
+          endif
+      endif
+  endif
 endfu
 fu! NERDCommenter_after()
-    if g:ft == 'vue'
-        setf vue
-        let g:ft = ''
-    endif
+  if g:ft == 'vue'
+      setf vue
+      let g:ft = ''
+  endif
 endfu
 
 call dein#add('tpope/vim-endwise')
@@ -121,12 +126,12 @@ call dein#add('vim-ruby/vim-ruby')
 call dein#add('tpope/vim-rails')
 let g:rails_no_abbreviations = 1
 
-call dein#add('w0rp/ale')
+"call dein#add('w0rp/ale')
 " for ale
-let g:ale_go_staticcheck_lint_package = 1
-let g:ale_linters = {
-\   'ruby': ['brakeman', 'rails_best_practices', 'reek', 'ruby'],
-\}
+" let g:ale_go_staticcheck_lint_package = 1
+" let g:ale_linters = {
+" "\   'ruby': ['brakeman', 'rails_best_practices', 'reek', 'ruby'],
+" "\}
 autocmd BufRead,BufNewFile * setlocal signcolumn=yes
 
 
@@ -138,10 +143,10 @@ call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('leafgarland/typescript-vim')
 call dein#add('posva/vim-vue')
-call dein#add('godlygeek/tabular')
+"call dein#add('godlygeek/tabular')
 
 call dein#add('Raimondi/delimitMate')
-call dein#add('terryma/vim-multiple-cursors')
+"call dein#add('terryma/vim-multiple-cursors')
 
 call dein#add('moll/vim-node')
 call dein#add('mhinz/vim-startify')
@@ -150,16 +155,8 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 call dein#add('mbbill/undotree')
 nnoremap <Leader>u :UndotreeToggle<cr>
-call dein#add('tpope/vim-eunuch')
 
 call dein#add('bronson/vim-trailing-whitespace')
-
-"call dein#add('mattn/webapi-vim')
-
-"NeoBundle  'luochen1990/rainbow'
-"let g:rainbow_active = 0
-
-"NeoBundle 'thinca/vim-quickrun'
 
 let g:go_fmt_command = "goimports"
 "let g:go_auto_type_info = 1
@@ -169,53 +166,79 @@ call dein#add('fatih/vim-go')
 "call dein#add('majutsushi/tagbar')
 "nmap <F8> :TagbarToggle<CR>
 
-"NeoBundle  'Yggdroot/indentLine'
-call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('Yggdroot/indentLine')
+"call dein#add('nathanaelkane/vim-indent-guides')
 
-"NeoBundle  'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"NeoBundle  'junegunn/fzf.vim'
-
-"NeoBundle 'stefanoverna/vim-i18n'
+"call dein#add('stefanoverna/vim-i18n')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
-" pacin python-neovim 
+" pacin python-neovim
 " :UpdateRemotePlugins
 " restart neovim
 
-call dein#add('Shougo/denite.nvim')
-
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', 'node_modules/', '__pycache__/', 'venv/'])
+"call dein#add('glebtv/denite.nvim', { 'rev': '1.2' })
 "call denite#custom#var('file/rec', 'command',
-	"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
-
-map <C-d> :Denite -start-filter file/rec <CR>
+"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"map <C-p> :Denite file/rec<CR>
 "call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
 "call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
 "call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
 "call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
 
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+"Ctrl+P {{{
 
-endfunction
+call dein#add('Shougo/denite.nvim')
+"call denite#custom#var('file/rec', 'command',
+"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"function! s:denite_my_settings() abort
+"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"endfunction
 
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  inoremap <silent><buffer><expr> <Down> denite#do_map('move_to_next_line')
-  inoremap <silent><buffer><expr> <Up> denite#do_map('move_to_previous_line')
-  inoremap <silent><buffer><expr> <C-p> denite#do_map('assign_previous_text')
-  inoremap <silent><buffer><expr> <C-n> denite#do_map('assign_next_text')
-endfunction
+"function! s:denite_filter_my_settings() abort
+"inoremap <silent><buffer> <C-p> <C-Up>
+"inoremap <silent><buffer> <C-n> <C-Down>
+"inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+"inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+"inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"inoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+"endfunction
+"augroup DENITE
+  "autocmd!
+  "autocmd FileType denite call s:denite_my_settings()
+  "autocmd FileType denite-filter call s:denite_filter_my_settings()
+"augroup end
+"map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
+
+"call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', 'node_modules/', '__pycache__/', 'venv/'])
+
+"call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
+
+"map <C-d> :Denite -start-filter file/rec <CR>
+"call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+"call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+"call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
+"call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
+
+"autocmd FileType denite call s:denite_my_settings()
+"function! s:denite_my_settings() abort
+"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+"nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+"nnoremap <silent><buffer><expr> q denite#do_map('quit')
+"nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+"nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+
+"endfunction
+
+"autocmd FileType denite-filter call s:denite_filter_my_settings()
+"function! s:denite_filter_my_settings() abort
+"inoremap <silent><buffer><expr> <Down> denite#do_map('move_to_next_line')
+"inoremap <silent><buffer><expr> <Up> denite#do_map('move_to_previous_line')
+"inoremap <silent><buffer><expr> <C-p> denite#do_map('assign_previous_text')
+"inoremap <silent><buffer><expr> <C-n> denite#do_map('assign_next_text')
+"endfunction
 
 call dein#add('bfredl/nvim-miniyank')
 map <Leader>y :Denite miniyank<CR>
@@ -230,9 +253,9 @@ map <C-p> :FZF<CR>
 " call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 "let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
-  "\ 'file': '\v\.(exe|so|dll|log|pid)$',
-  "\ }
+"\ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
+"\ 'file': '\v\.(exe|so|dll|log|pid)$',
+"\ }
 
 "let g:ctrlp_match_window = 'max:50,results:50'
 "let g:ctrlp_funky_syntax_highlight = 1
@@ -352,6 +375,7 @@ filetype plugin indent on
 
 "Basic" {{{
   color Tomorrow-Night
+  "color onehalflight
   "color onehalf
   syntax on
 "}}}
@@ -371,3 +395,8 @@ filetype plugin indent on
     set number
   "}}}
 "}}}
+
+function! DirTitle()
+  let &titlestring=fnamemodify(getcwd(), ':t')
+  set title
+endfunction
