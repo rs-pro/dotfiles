@@ -1,10 +1,10 @@
 Xft.antialias:  1
 Xft.autohint:   0
 
-Xft.dpi:        96
-XTerm*faceName: xft:PragmataPro:pixelsize=14
-URxvt*font: xft:PragmataPro Mono:pixelsize=14:antialias=true
-URxvt*boldFont: xft:PragmataPro Mono:pixelsize=14:antialias=true
+Xft.dpi:        140
+XTerm*faceName: xft:PragmataPro:pixelsize=19
+URxvt*font: xft:PragmataPro Mono:pixelsize=19:antialias=true
+URxvt*boldFont: xft:PragmataPro Mono:pixelsize=19:antialias=true
 
 Xft.hinting:    1
 Xft.hintstyle:  hintfull

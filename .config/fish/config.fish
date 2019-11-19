@@ -84,7 +84,7 @@ function grm
 end
 
 function yain
-  yaourt -S $argv
+  yay -S $argv
 end
 
 if ssh-add -l > /dev/null
