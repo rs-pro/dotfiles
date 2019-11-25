@@ -96,6 +96,7 @@ PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin:/data/go/bin
 
 export GOPATH=/data/go
 export GOBIN=$GOPATH/bin
+export GOPRIVATE="rscz.ru"
 
 #PATH=$PATH:$HOME/.gem/bin:/data/go/bin
 #export BUNDLE_PATH=$HOME/.gem
