@@ -60,6 +60,7 @@ au BufRead,BufNewFile *.json set conceallevel=0
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.ts set filetype=typescript
+au BufRead,BufNewFile *.tsx set filetype=typescript
 au BufRead,BufNewFile *.handlebars set filetype=html
 
 " _ backups {{{
