@@ -2,7 +2,7 @@
 " init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
-
+"set shell /usr/bin/zsh
 set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
 set runtimepath+=~/.nvim/
 if dein#load_state('~/.nvim/')

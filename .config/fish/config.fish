@@ -11,13 +11,12 @@ set fish_greeting ""
 eval (python -m virtualfish)
 
 set -x EDITOR 'nvim'
-set -x GEM_HOME $HOME/.gem/ruby/2.6.0
-# set -x GEM_PATH $HOME/.gem/ruby/2.6.0 $GEM_PATH /usr/lib/ruby/gems/2.6.0
+set -x GEM_HOME $HOME/.gem/ruby/2.7.0
 
 set -x GOPATH /data/go
 set -x GOBIN $GOPATH/bin
 
-set -x PATH $PATH $HOME/.gem/ruby/2.6.0/bin
+set -x PATH $PATH $HOME/.gem/ruby/2.7.0/bin
 set -x PATH $PATH /data/go/bin
 
 set -x ANDROID_HOME $HOME/Android/Sdk
