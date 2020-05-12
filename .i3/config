@@ -64,7 +64,7 @@ bindsym $mod+m exec ls /data/go/src/rscz.ru/ | dmenu -fn 'PragmataPro Mono-12' |
 bindsym $mod+slash exec ls /data/go/src/github.com/ | dmenu -fn 'PragmataPro Mono-12' | tr -d '\n' | xargs printf "+'cd /data/go/src/github.com/%s' +NERDTree" | GOPATH=/data/go xargs nvim-qt
 
 #bindsym $mod+u exec virtualbox --startvm cc
-bindsym Print exec deepin-screenshot
+bindsym Print exec flameshot gui
 
 bindsym $mod+semicolon exec xkb-switch -s us && xscreensaver-command -lock
 
