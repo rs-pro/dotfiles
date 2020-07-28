@@ -7,3 +7,5 @@
 
 [url "git@rscz.ru:"]
 	insteadOf = https://rscz.ru/
+[pull]
+	ff = only

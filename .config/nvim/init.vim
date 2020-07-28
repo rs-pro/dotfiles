@@ -2,7 +2,7 @@
 " init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
-"set shell /usr/bin/zsh
+set shell=/usr/bin/zsh
 set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
 set runtimepath+=~/.nvim/
 if dein#load_state('~/.nvim/')
@@ -56,10 +56,12 @@ set foldlevelstart=100
 
 call dein#add("elzr/vim-json")
 let g:vim_json_syntax_conceal = 0
+
 au BufRead,BufNewFile *.json set conceallevel=0
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.ts set filetype=typescript
+au BufRead,BufNewFile *.tsx set filetype=typescript
 au BufRead,BufNewFile *.handlebars set filetype=html
 
 " _ backups {{{
@@ -126,7 +128,7 @@ call dein#add('vim-ruby/vim-ruby')
 call dein#add('tpope/vim-rails')
 let g:rails_no_abbreviations = 1
 
-"call dein#add('w0rp/ale')
+call dein#add('w0rp/ale')
 " for ale
 " let g:ale_go_staticcheck_lint_package = 1
 " let g:ale_linters = {
@@ -136,7 +138,7 @@ autocmd BufRead,BufNewFile * setlocal signcolumn=yes
 
 
 call dein#add('tpope/vim-fugitive')
-"call dein#add('airblade/vim-gitgutter')
+call dein#add('airblade/vim-gitgutter')
 "call dein#add('gregsexton/gitv')
 
 call dein#add('pangloss/vim-javascript')
@@ -167,84 +169,23 @@ call dein#add('fatih/vim-go')
 "nmap <F8> :TagbarToggle<CR>
 
 call dein#add('Yggdroot/indentLine')
+"let g:indentLine_setColors = 0
+let g:indentLine_color_term = 9
+let g:indentLine_char = '┆'
+set list lcs=tab:\┆\ 
+
 "call dein#add('nathanaelkane/vim-indent-guides')
 
 "call dein#add('stefanoverna/vim-i18n')
 "vmap <Leader>z :call I18nTranslateString()<CR>
 "vmap <Leader>dt :call I18nDisplayTranslation()<CR>
 
-" pacin python-neovim
-" :UpdateRemotePlugins
-" restart neovim
-
-"call dein#add('glebtv/denite.nvim', { 'rev': '1.2' })
-"call denite#custom#var('file/rec', 'command',
-"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-"map <C-p> :Denite file/rec<CR>
-"call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-"call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-"call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
-"call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
-
 "Ctrl+P {{{
-
 call dein#add('Shougo/denite.nvim')
-"call denite#custom#var('file/rec', 'command',
-"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-"function! s:denite_my_settings() abort
-"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-"endfunction
-
-"function! s:denite_filter_my_settings() abort
-"inoremap <silent><buffer> <C-p> <C-Up>
-"inoremap <silent><buffer> <C-n> <C-Down>
-"inoremap <silent><buffer> <Up> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-"inoremap <silent><buffer> <Down>  <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-"inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-"inoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
-"endfunction
-"augroup DENITE
-  "autocmd!
-  "autocmd FileType denite call s:denite_my_settings()
-  "autocmd FileType denite-filter call s:denite_filter_my_settings()
-"augroup end
-"map <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
-
-"call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', 'node_modules/', '__pycache__/', 'venv/'])
-
-"call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-"call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
-
-"map <C-d> :Denite -start-filter file/rec <CR>
-"call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-"call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-"call denite#custom#map('insert', '<C-p>', '<denite:assign_previous_text>', 'noremap')
-"call denite#custom#map('insert', '<C-n>', '<denite:assign_next_text>', 'noremap')
-
-"autocmd FileType denite call s:denite_my_settings()
-"function! s:denite_my_settings() abort
-"nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-"nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-"nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-"nnoremap <silent><buffer><expr> q denite#do_map('quit')
-"nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-"nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-
-"endfunction
-
-"autocmd FileType denite-filter call s:denite_filter_my_settings()
-"function! s:denite_filter_my_settings() abort
-"inoremap <silent><buffer><expr> <Down> denite#do_map('move_to_next_line')
-"inoremap <silent><buffer><expr> <Up> denite#do_map('move_to_previous_line')
-"inoremap <silent><buffer><expr> <C-p> denite#do_map('assign_previous_text')
-"inoremap <silent><buffer><expr> <C-n> denite#do_map('assign_next_text')
-"endfunction
-
 call dein#add('bfredl/nvim-miniyank')
 map <Leader>y :Denite miniyank<CR>
 
 " pacin fzf
-
 "set rtp+=/usr/local/opt/fzf
 call dein#add('junegunn/fzf')
 call dein#add('junegunn/fzf.vim')
@@ -252,33 +193,6 @@ map <C-k> :FZF<CR>
 map <C-p> :GFiles<CR>
 
 " call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-"let g:ctrlp_custom_ignore = {
-"\ 'dir':  '\v[\/](\.git|public|log|bower_components|node_modules|coverage|tmp)$',
-"\ 'file': '\v\.(exe|so|dll|log|pid)$',
-"\ }
-
-"let g:ctrlp_match_window = 'max:50,results:50'
-"let g:ctrlp_funky_syntax_highlight = 1
-"let g:ctrlp_mruf_relative = 1
-"
-"https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders/22784889#22784889
-"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-
-" use ag for faster ctrlp
-"if executable('ag')
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" bash \ zsh
-" let g:ctrlp_user_command = 'cd %s && ag . -l --nocolor -g ""'
-" fish:
-"let g:ctrlp_user_command = 'cd %s; and ag . -l --nocolor --depth 5 -g ""'
-" Unset cap of 10,000 files so we find everything
-"let g:ctrlp_working_path_mode=''
-"let g:ctrlp_max_files=0
-"let g:ctrlp_max_depth=100
-"endif
-
-"call dein#add('ctrlpvim/ctrlp.vim')
 
 set mouse=a
 "set unnamedclip
@@ -348,6 +262,7 @@ map <F7> :%s/\r//g<cr>
 " remove unwanted spaces
 nnoremap <silent> <F10> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+call dein#add('editorconfig/editorconfig-vim')
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 map <S-Up> <Up>
@@ -377,8 +292,9 @@ filetype plugin indent on
 
 
 "Basic" {{{
-  "color Tomorrow-Night
-  color onehalflight
+  set background=dark
+  color Tomorrow-Night
+  "color onehalflight
   "color onehalf
   syntax on
 "}}}
@@ -403,3 +319,22 @@ function! DirTitle()
   let &titlestring=fnamemodify(getcwd(), ':t')
   set title
 endfunction
+
+" https://breuer.dev/blog/top-neovim-plugins.html
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+nnoremap <silent> <C-m-left> :call WinMove('h')<CR>
+nnoremap <silent> <C-m-down> :call WinMove('j')<CR>
+nnoremap <silent> <C-m-up> :call WinMove('k')<CR>
+nnoremap <silent> <C-m-right> :call WinMove('l')<CR>
