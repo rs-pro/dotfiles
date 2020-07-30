@@ -286,6 +286,7 @@ imap <PageDown> <C-O><C-D>
 "Colors {{{
 call dein#add('nonsense/tomorrow-night-vim-theme')
 call dein#add('glebtv/onehalf')
+call dein#add('dracula/vim')
 "}}}
 
 filetype plugin indent on
@@ -294,6 +295,8 @@ filetype plugin indent on
 "Basic" {{{
   set background=dark
   color Tomorrow-Night
+  "color dracula
+  "color Tomorrow-Night
   "color onehalflight
   "color onehalf
   syntax on

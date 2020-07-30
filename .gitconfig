@@ -7,5 +7,10 @@
 
 [url "git@rscz.ru:"]
 	insteadOf = https://rscz.ru/
+
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = false
 [pull]
 	ff = only
