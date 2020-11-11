@@ -97,6 +97,7 @@ call dein#add('vim-airline/vim-airline-themes')
 "call dein#add('mileszs/ack.vim')
 call dein#add('nelstrom/vim-visual-star-search')
 call dein#add('junegunn/vim-easy-align')
+let g:NERDTreeChDirMode = 2
 call dein#add('scrooloose/nerdtree')
 call dein#add('scrooloose/nerdcommenter')
 " vue support in nerdcommenter
