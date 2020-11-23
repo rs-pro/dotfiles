@@ -1,14 +1,13 @@
-# curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-# fisher add gin0606/fish-bundler-aliases
-# fisher add tuvistavie/fish-ssh-agent
-# fisher add attilagyorffy/plugin-bundler
-# fisher add oh-my-fish/plugin-archlinux
-# fisher add oh-my-fish/plugin-rails
-# fisher add oh-my-fish/theme-bobthefish
+# curl -L https://get.oh-my.fish | fish
+# omf install https://github.com/danhper/fish-ssh-agent
+# omf install bundler
+# omf install https://github.com/gin0606/fish-bundler-aliases
+# omf install archlinux
+# omf install bobthefish
 
 set fish_greeting ""
 
-eval (python -m virtualfish)
+#eval (python -m virtualfish)
 
 set -x EDITOR 'nvim'
 

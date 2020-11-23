@@ -224,15 +224,15 @@ bar {
   #tray_output HDMI-0
 }
 
-exec --no-startup-id ~/.screenlayout/arandr.sh
+#exec --no-startup-id ~/.screenlayout/arandr.sh
 exec --no-startup-id xscreensaver -no-splash
-exec --no-startup-id ~/xmodmap.sh
+#exec --no-startup-id ~/xmodmap.sh
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id xset r rate 200 30
 exec --no-startup-id pa-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id optimus-manager-qt
+#exec --no-startup-id optimus-manager-qt
 exec --no-startup-id setxkbmap "us,ru" -option grp:caps_toggle
 #exec --no-startup-id "/usr/bin/nohup /usr/lib/notification-daemon-1.0/notification-daemon &"
 exec --no-startup-id "/usr/bin/nohup /usr/lib/xfce4/notifyd/xfce4-notifyd &"

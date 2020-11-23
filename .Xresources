@@ -10,7 +10,7 @@
 
 Xft.antialias:  1
 Xft.autohint:   0
-Xft.dpi:        96
+Xft.dpi:        140
 Xft.hinting:    1
 Xft.hintstyle:  hintfull
 Xft.rgba:       rgb
@@ -19,7 +19,7 @@ Xft.lcdfilter:  lcddefault
 ! Xterm
 xterm*background: #262626
 xterm*foreground: #657b83
-XTerm*faceName: xft:PragmataPro:pixelsize=14
+XTerm*faceName: xft:PragmataPro:pixelsize=18
 XTerm*termName: xterm-256color
 
 URxvt.depth:                32
@@ -38,8 +38,8 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt*font: xft:PragmataPro:pixelsize=14:antialias=true
-URxvt*boldFont: xft:PragmataPro:pixelsize=14:antialias=true
+URxvt*font: xft:PragmataPro:pixelsize=18:antialias=true
+URxvt*boldFont: xft:PragmataPro:pixelsize=18:antialias=true
 
 ! Fix font space
 URxvt*letterSpace: -1
