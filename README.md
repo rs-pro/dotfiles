@@ -22,7 +22,7 @@ git pull
 (adjust as you need)
 
 ```
-pacman -S pkgfile gparted firefox gimp whois react-native-debugger atom zip unzip paprefs smplayer-themes smplayer-skins smtube youtube-dl mplayer smplayer bluez bluez-utils usbutils alsa-utils mpg123 imlib2 libcdio libcddb deadbeef unarchiver unrar kimageformats kipi-plugins kamera gwenview kio-extras discord the_silver_searcher nodejs go npm ruby python2 python docker samba flameshot xscreensaver libreoffice-fresh yarn dbeaver memcached redis elasticsearch postgresql xfce4-notifyd blueman wget telegram-desktop breeze-icons ark scite kate krename kdiff3 p7zip gnome-keyring neovim-qt dmenu xorg-xsetroot binutils os-prober zsh fish xorg-xrdb nvidia nvidia-settings rxvt-unicode urxvt-perls i3-wm git vim neovim mc tmux
+pacman -S pkgfile gparted firefox gimp whois react-native-debugger atom zip unzip paprefs smplayer-themes smplayer-skins smtube youtube-dl mplayer smplayer bluez bluez-utils usbutils alsa-utils mpg123 imlib2 libcdio libcddb deadbeef unarchiver unrar kimageformats kipi-plugins kamera gwenview kio-extras discord the_silver_searcher nodejs go npm ruby python2 python docker samba flameshot xscreensaver libreoffice-fresh yarn dbeaver memcached redis elasticsearch postgresql xfce4-notifyd blueman wget telegram-desktop breeze-icons ark scite kate krename kdiff3 p7zip gnome-keyring neovim-qt dmenu xorg-xsetroot binutils os-prober zsh fish xorg-xrdb nvidia nvidia-settings rxvt-unicode urxvt-perls i3-wm git vim neovim mc tmux lightdm lightdm-gtk-greeter
 
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
