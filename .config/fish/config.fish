@@ -3,6 +3,7 @@
 # omf install bundler
 # omf install archlinux
 # omf install bobthefish
+# omf install https://github.com/jorgebucaran/nvm.fish
 
 set fish_greeting ""
 
@@ -24,7 +25,7 @@ set -x EDITOR 'nvim'
 set -x GOPATH /data/go
 set -x GOBIN $GOPATH/bin
 #set -x PATH $PATH /data/go/bin
-set --universal fish_user_paths $fish_user_paths /data/go/bin
+
 
 set -x GOPRIVATE rscz.ru
 
@@ -34,9 +35,21 @@ set -x GOPRIVATE rscz.ru
 set -x ANDROID_HOME $HOME/Android/Sdk
 set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 
-set --universal fish_user_paths $fish_user_paths $ANDROID_HOME/platform-tools
-set --universal fish_user_paths $fish_user_paths $ANDROID_HOME/tools
+#set -a fish_user_paths /data/go/bin
+#set -a fish_user_paths $ANDROID_HOME/platform-tools
+#set -a fish_user_paths $ANDROID_HOME/tools
 
+# run this once in shell:
+#set --universal fish_user_paths $fish_user_paths /data/go/bin
+#set --universal fish_user_paths $fish_user_paths $ANDROID_HOME/platform-tools
+#set --universal fish_user_paths $fish_user_paths $ANDROID_HOME/tools
+#set --universal fish_user_paths $fish_user_paths /data/mattermost/mattermost-server/bin/
+#set --universal fish_user_paths $fish_user_paths ~/.rbenv/shims
+# view with set -S fish_user_paths
+# delete with set -e fish_user_paths 
+
+
+status --is-interactive; and source (rbenv init -|psub)
 
 function ll
   ls --human-readable -l $argv

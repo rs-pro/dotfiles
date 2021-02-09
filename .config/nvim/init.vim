@@ -129,7 +129,7 @@ call dein#add('vim-ruby/vim-ruby')
 call dein#add('tpope/vim-rails')
 let g:rails_no_abbreviations = 1
 
-call dein#add('w0rp/ale')
+" call dein#add('w0rp/ale')
 " for ale
 " let g:ale_go_staticcheck_lint_package = 1
 " let g:ale_linters = {
