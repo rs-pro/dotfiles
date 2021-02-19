@@ -51,7 +51,8 @@ bindsym $mod+d exec --no-startup-id "SHELL=/bin/zsh j4-dmenu-desktop --dmenu=\\"
 
 #bindsym $mod+y exec deadbeef
 bindsym $mod+z exec krusader
-bindsym $mod+c exec chromium
+#bindsym $mod+c exec chromium
+bindsym $mod+c exec brave
 
 #bindsym $mod+v exec printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs xterm -e
 #bindsym $mod+comma exec ls /data/ | dmenu | tr -d '\n' | xargs printf "nvim +'cd /data/%s' +NERDTree" | NVIM_TUI_ENABLE_CURSOR_SHAPE=1 xargs xterm -e
@@ -112,6 +113,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+t floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -225,6 +227,7 @@ bar {
 }
 
 #exec --no-startup-id ~/.screenlayout/arandr.sh
+#exec --no-startup-id ~/.screenlayout/nvidia.sh
 exec --no-startup-id xscreensaver -no-splash
 #exec --no-startup-id ~/xmodmap.sh
 exec --no-startup-id xsetroot -solid "#333333"
