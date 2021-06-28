@@ -3,7 +3,12 @@
 # omf install bundler
 # omf install archlinux
 # omf install bobthefish
+
+# !THIS DOESNT WORK!
 # omf install https://github.com/jorgebucaran/nvm.fish
+# THIS DOES:
+# curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+# fisher install jorgebucaran/nvm.fish
 
 set fish_greeting ""
 
