@@ -2,6 +2,10 @@
 " init: mkdir -p ~/.nvim/repos/github.com/Shougo/ && git clone https://github.com/Shougo/dein.vim.git ~/.nvim/repos/github.com/Shougo/dein.vim
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
+
+set regexpengine=1
+" let g:loaded_matchparen = 1
+
 set shell=/usr/bin/zsh
 set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
 set runtimepath+=~/.nvim/
@@ -285,19 +289,27 @@ imap <PageDown> <C-O><C-D>
 
 
 "Colors {{{
+let base16colorspace=256
+set termguicolors
+call dein#add('chriskempson/base16-vim')
 call dein#add('nonsense/tomorrow-night-vim-theme')
 call dein#add('glebtv/onehalf')
 call dein#add('dracula/vim')
+call dein#add('xolox/vim-misc')
+call dein#add('xolox/vim-colorscheme-switcher')
 "}}}
 
 filetype plugin indent on
 
 
 "Basic" {{{
-  set background=dark
+  "set background=dark
+  "color base16-default-dark
+  "color base16-default-light
+  "color base16-dracula
+  "color Tomorrow
   color Tomorrow-Night
   "color dracula
-  "color Tomorrow-Night
   "color onehalflight
   "color onehalf
   syntax on
