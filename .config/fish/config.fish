@@ -31,6 +31,7 @@ set -x GOPATH /data/go
 set -x GOBIN $GOPATH/bin
 #set -x PATH $PATH /data/go/bin
 
+set -x FZF_DEFAULT_OPTS "--history=$HOME/.fzf_history"
 
 set -x GOPRIVATE rscz.ru
 
@@ -50,6 +51,8 @@ set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 #set --universal fish_user_paths $fish_user_paths $ANDROID_HOME/tools
 #set --universal fish_user_paths $fish_user_paths /data/mattermost/mattermost-server/bin/
 #set --universal fish_user_paths $fish_user_paths ~/.rbenv/shims
+#set --universal fish_user_paths $fish_user_paths ~/.config/composer/vendor/bin/
+#
 # view with set -S fish_user_paths
 # delete with set -e fish_user_paths 
 

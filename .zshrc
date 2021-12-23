@@ -97,3 +97,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+export FZF_DEFAULT_OPTS="--history=$HOME/.fzf_history"

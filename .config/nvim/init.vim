@@ -3,8 +3,10 @@
 " mkdir -p ~/.nvim/tmp/undo && mkdir ~/.nvim/tmp/backup && mkdir ~/.nvim/tmp/swap
 " :call dein#install()
 
-set regexpengine=1
-" let g:loaded_matchparen = 1
+" for php lags
+"set regexpengine=1
+"let g:loaded_matchparen = 1
+"set noshowmatch
 
 set shell=/usr/bin/zsh
 set runtimepath+=~/.nvim/repos/github.com/Shougo/dein.vim
@@ -164,6 +166,8 @@ call dein#add('mbbill/undotree')
 nnoremap <Leader>u :UndotreeToggle<cr>
 
 call dein#add('bronson/vim-trailing-whitespace')
+
+call dein#add('Galooshi/vim-import-js')
 
 let g:go_fmt_command = "goimports"
 "let g:go_auto_type_info = 1
