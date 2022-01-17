@@ -327,8 +327,8 @@ filetype plugin indent on
     "map <leader>nf :NERDTreeFind<CR>
   "}}}
   "NerdCommenter {{{
-    map <silent><F6> :call NERDComment(0, "invert")<cr>
-    map <silent><leader>r :call NERDComment(0, "invert")<cr>
+    map <silent><F6> :call nerdcommenter#Comment(0, "invert")<cr>
+    map <silent><leader>r :call nerdcommenter#Comment(0, "invert")<cr>
   "}}}
   "Numbers" {{{
     set number
