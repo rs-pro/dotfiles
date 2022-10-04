@@ -73,3 +73,24 @@ keymap.set("", "<F9>", "gg=G")
 -- Plugin toggles
 keymap.set("", "<leader>u", ":MundoToggle<CR>")
 keymap.set("", "<leader>t", ":NvimTreeToggle<CR>")
+
+-- Easier in visual mode
+keymap.set("", "<S-Up>", "<Up>")
+keymap.set("", "<S-Down>", "<Down>")
+
+-- Search files in popup window
+keymap.set("", "<C-k>", ":<C-U>Leaderf file --popup<CR>")
+
+-- Grep project files in popup window
+keymap.set("", "<C-p>", ":<C-U>Leaderf rg --no-messages --popup<CR>")
+
+-- save
+keymap.set("", "<C-s>", ":wall<cr>")
+keymap.set("i", "<C-s>", "<esc>:wall<cr>")
+
+-- hop
+keymap.set("", "<C-h>", ":HopWord<CR>")
+
+keymap.set("", "<leader>v", ":e ~/.config/nvim/init.lua")
+keymap.set("", "<leader>k", ":e ~/.config/nvim/lua/keymap.lua")
+keymap.set("", "<leader>p", ":e ~/.config/nvim/lua/plugins.lua")

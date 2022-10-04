@@ -11,6 +11,8 @@ vim.opt.autoread = true
 vim.opt.virtualedit = 'onemore'
 vim.opt.backspace = 'indent,eol,start'
 vim.g.mapleader = "\\"
+vim.cmd([[let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-Up>'], '<Down>': ['<C-Down>']}]])
+
 
 vim.g.ackprg = 'ag --vimgrep --smart-case'
 vim.cmd.inoreabbrev({"ag", "Ack"})
