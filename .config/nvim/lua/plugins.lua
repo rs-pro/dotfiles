@@ -182,6 +182,10 @@ return require('packer').startup(function(use)
     -- Handy unix command inside Vim (Rename, Move etc.)
     use { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } }
 
+    use { "tpope/vim-unimpaired" }
+    use { "tpope/vim-endwise" }
+    use { "tpope/vim-rails" }
+
     -- Repeat vim motions
     use { "tpope/vim-repeat", event = "VimEnter" }
 
@@ -304,5 +308,4 @@ return require('packer').startup(function(use)
 
     use { "gpanders/editorconfig.nvim" }
 
-    use { "tpope/vim-unimpaired" }
 end)
