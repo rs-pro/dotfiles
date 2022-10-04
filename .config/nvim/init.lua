@@ -35,6 +35,9 @@ vim.opt.undoreload = 10000
 vim.opt.backup = true
 vim.opt.swapfile = false
 
+vim.opt.foldmethod = 'syntax'
+vim.opt.foldlevelstart = 100
+
 function _G.current_tab()
   local curr_buf = vim.fn.bufnr()
   local total = 0
