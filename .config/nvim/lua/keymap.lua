@@ -4,13 +4,10 @@ local keymap = vim.keymap
 keymap.set('n', '<F1>', '<Esc>')
 
 -- Indent with tab
+keymap.set("v", "<Tab>", ":><CR>gv")
+keymap.set("v", "<S-Tab>", ":<<CR>gv")
 keymap.set("n", "<Tab>", ">>")
 keymap.set("n", "<S-Tab>", "<<")
---keymap.set("v", "<Tab>", ":><CR>gv")
---keymap.set("v", "<S-Tab>", ":<<CR>gv")
-
-vim.cmd([[vmap <Tab> :><CR>gv]])
-vim.cmd([[vmap <S-Tab> :<<CR>gv]])
 
 
 keymap.set("i", "<Tab>", "<c-t>")
@@ -43,11 +40,15 @@ keymap.set("i", "<Home>", "<C-O><Home>")
 keymap.set("n", "<kHome>", "^")
 keymap.set("i", "<kHome>", "<C-O><Home>")
 
--- Move line with ctrl-up/down
-keymap.set("n", "<C-Up>", "[e")
-keymap.set("n", "<C-Down>", "]e")
-keymap.set("v", "<C-Up>", "[egv")
-keymap.set("v", "<C-Down>", "]egv")
+-- Move line with ctrl-up/down - requires unimpaired.vim
+keymap.set("n", "<C-Up>", "[e", {remap=true})
+keymap.set("n", "<C-Down>", "]e", {remap=true})
+keymap.set("v", "<C-Up>", "[egv", {remap=true})
+keymap.set("v", "<C-Down>", "]egv", {remap=true})
+
+-- Duplicate lines
+keymap.set("", "<C-S-Up>", "YP")
+keymap.set("", "<C-S-Down>", "YP")
 
 -- M-s to insert without saving to buffer
 keymap.set("n", "<M-s>", "\"_diwP")

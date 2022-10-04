@@ -303,4 +303,6 @@ return require('packer').startup(function(use)
     use { "fatih/vim-go" }
 
     use { "gpanders/editorconfig.nvim" }
+
+    use { "tpope/vim-unimpaired" }
 end)
