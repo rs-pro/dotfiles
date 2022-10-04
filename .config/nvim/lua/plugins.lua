@@ -25,14 +25,12 @@ return require('packer').startup(function(use)
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
-    if vim.g.is_mac then
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        event = "BufEnter",
-        run = ":TSUpdate",
-        config = [[require('config.treesitter')]],
-      }
-    end
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufEnter",
+      run = ":TSUpdate",
+      config = [[require('config.treesitter')]],
+    }
 
     -- Python indent (follows the PEP8 style)
     -- use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
@@ -94,10 +92,8 @@ return require('packer').startup(function(use)
     --use { "EdenEast/nightfox.nvim", opt = true }
     --use { "rebelot/kanagawa.nvim", opt = true }
     --use { "catppuccin/nvim", as = "catppuccin", opt = true }
-    --use({
-    --  'glepnir/zephyr-nvim',
-    --  requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
-    --})
+    --use({'glepnir/zephyr-nvim', opt = true})
+    
     use {
       'navarasu/onedark.nvim',
       config = function()
