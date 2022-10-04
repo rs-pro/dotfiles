@@ -4,8 +4,8 @@ local keymap = vim.keymap
 keymap.set('n', '<F1>', '<Esc>')
 
 -- Indent with tab
-keymap.set("v", "<Tab>", ":><CR>gv", {remap=true})
-keymap.set("v", "<S-Tab>", ":<<CR>gv", {remap=true})
+keymap.set("v", "<Tab>", ">gv", {remap=true})
+keymap.set("v", "<S-Tab>", "<gv", {remap=true})
 keymap.set("n", "<Tab>", ">>")
 keymap.set("n", "<S-Tab>", "<<")
 
