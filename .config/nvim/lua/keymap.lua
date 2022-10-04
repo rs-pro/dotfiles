@@ -6,8 +6,13 @@ keymap.set('n', '<F1>', '<Esc>')
 -- Indent with tab
 keymap.set("n", "<Tab>", ">>")
 keymap.set("n", "<S-Tab>", "<<")
-keymap.set("v", "<Tab>", ":><CR>gv")
-keymap.set("v", "<S-Tab>", ":<<CR>gv")
+--keymap.set("v", "<Tab>", ":><CR>gv")
+--keymap.set("v", "<S-Tab>", ":<<CR>gv")
+
+vim.cmd([[vmap <Tab> :><CR>gv]])
+vim.cmd([[vmap <S-Tab> :<<CR>gv]])
+
+
 keymap.set("i", "<Tab>", "<c-t>")
 keymap.set("i", "<S-Tab>", "<c-d>")
 
@@ -67,6 +72,8 @@ keymap.set('v', '<F6>', '<Plug>(comment_toggle_blockwise_visual)')
 -- Cleanup windows EOL
 keymap.set("", "<F7>", ":%s/\\r//g<cr>")
 
+keymap.set("", "<F8>", ":StripTrailingWhitespace<cr>")
+
 -- Reindent file
 keymap.set("", "<F9>", "gg=G")
 
@@ -91,6 +98,6 @@ keymap.set("i", "<C-s>", "<esc>:wall<cr>")
 -- hop
 keymap.set("", "<C-h>", ":HopWord<CR>")
 
-keymap.set("", "<leader>v", ":e ~/.config/nvim/init.lua")
-keymap.set("", "<leader>k", ":e ~/.config/nvim/lua/keymap.lua")
-keymap.set("", "<leader>p", ":e ~/.config/nvim/lua/plugins.lua")
+keymap.set("", "<leader>v", ":e ~/.config/nvim/init.lua<CR>")
+keymap.set("", "<leader>k", ":e ~/.config/nvim/lua/keymap.lua<CR>")
+keymap.set("", "<leader>p", ":e ~/.config/nvim/lua/plugins.lua<CR>")

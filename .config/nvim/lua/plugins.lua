@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
     if vim.g.is_mac then
       use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
     end
-    
+
 
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
@@ -76,7 +76,7 @@ return require('packer').startup(function(use)
       cmd = "Telescope",
       requires = { { "nvim-lua/plenary.nvim" } },
     }
-    
+
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
     --use { "rebelot/kanagawa.nvim", opt = true }
     --use { "catppuccin/nvim", as = "catppuccin", opt = true }
     --use({'glepnir/zephyr-nvim', opt = true})
-    
+
     use {
       'navarasu/onedark.nvim',
       config = function()
@@ -102,11 +102,11 @@ return require('packer').startup(function(use)
     }
 
     --use 'kvrohit/rasmus.nvim'
-    
+
     -- color switcher
     -- use 'xolox/vim-misc'
     -- use 'xolox/vim-colorscheme-switcher'
-    
+
 
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 
@@ -297,8 +297,10 @@ return require('packer').startup(function(use)
     use { "ii14/emmylua-nvim", ft = "lua" }
 
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
-    
+
     use { "mileszs/ack.vim" }
-    
+
     use { "fatih/vim-go" }
+
+    use { "gpanders/editorconfig.nvim" }
 end)
