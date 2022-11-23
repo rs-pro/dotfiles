@@ -1,3 +1,4 @@
+-- https://www.imaginaryrobots.net/posts/2021-04-17-converting-vimrc-to-lua/
 
 require('plugins')
 require('keymap')
