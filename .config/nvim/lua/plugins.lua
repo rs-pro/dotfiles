@@ -17,13 +17,9 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
-    if vim.g.is_mac then
-      use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
-    end
-
-
+    
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp" }
 
     use {
       "nvim-treesitter/nvim-treesitter",
@@ -108,7 +104,7 @@ return require('packer').startup(function(use)
     -- use 'xolox/vim-colorscheme-switcher'
 
 
-    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
+    use { "kyazdani42/nvim-web-devicons" }
 
     use {
       "nvim-lualine/lualine.nvim",
@@ -169,7 +165,13 @@ return require('packer').startup(function(use)
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use { "907th/vim-auto-save", event = "InsertEnter" }
+    use({
+      "Pocco81/auto-save.nvim",
+      config = function()
+      require("auto-save").setup {
+      }
+      end,
+    })
 
     -- Show undo history visually
     use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
@@ -300,7 +302,7 @@ return require('packer').startup(function(use)
 
     use { "ii14/emmylua-nvim", ft = "lua" }
 
-    use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+    -- use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
 
     use { "mileszs/ack.vim" }
 
