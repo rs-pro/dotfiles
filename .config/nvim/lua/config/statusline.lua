@@ -112,7 +112,7 @@ require("lualine").setup {
       },
     },
     lualine_c = {
-      "filename",
+      {"filename", path = 2},
       {
         ime_state,
         color = { fg = "black", bg = "#f46868" },

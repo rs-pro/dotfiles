@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
     }
 
     -- Stay after pressing * and search selected text
-    use { "haya14busa/vim-asterisk", event = "VimEnter" }
+    -- use { "haya14busa/vim-asterisk", event = "VimEnter" }
 
     -- File search, tag search and more
     if vim.g.is_win then
@@ -165,15 +165,15 @@ return require('packer').startup(function(use)
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use({
-      "Pocco81/auto-save.nvim",
-      config = function()
-      require("auto-save").setup {
-        enabled = true,
-        trigger_events = {"InsertLeave", "TextChanged", "FocusLost"}
-      }
-      end,
-    })
+    --use({
+    --  "Pocco81/auto-save.nvim",
+    --  config = function()
+    --  require("auto-save").setup {
+    --    enabled = true,
+    --    trigger_events = {"FocusLost"}
+    --  }
+    --  end,
+    --})
 
     -- Show undo history visually
     use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
