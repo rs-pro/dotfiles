@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   pattern = { "*" },
 })
 vim.opt.hlsearch = true
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.virtualedit = 'onemore'
 vim.opt.backspace = 'indent,eol,start'
@@ -48,21 +49,18 @@ vim.opt.swapfile = false
 vim.opt.foldmethod = 'syntax'
 vim.opt.foldlevelstart = 100
 
-function _G.current_tab()
-  local curr_buf = vim.fn.bufnr()
-  local total = 0
-  local curr_tab
+vim.api.nvim_cmd({
+  cmd = "cabbrev",
+  args = {
+    "ack",
+    "Ack",
+    },
+}, {})
 
-  for i = 1, vim.fn.tabpagenr('$') do
-    total = total + 1
-    for _, bufnr in ipairs(vim.fn.tabpagebuflist(i)) do
-      if bufnr == curr_buf then
-        curr_tab = i
-      end
-    end
-  end
-
-  return string.format('(%d of %d)', curr_tab, total)
-end
-
-vim.opt.titlestring = [[%f %h%m%r%w - %{v:progname} %{luaeval('current_tab()')}]]
+vim.api.nvim_cmd({
+  cmd = "cabbrev",
+  args = {
+    "ag",
+    "Ack",
+    },
+}, {})

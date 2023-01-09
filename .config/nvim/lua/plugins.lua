@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
-    
+
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp" }
 
@@ -155,9 +155,15 @@ return require('packer').startup(function(use)
 
     -- Comment plugin
     use {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
+
+    use {
       'numToStr/Comment.nvim',
       config = function()
-          require('Comment').setup()
+          require('Comment').setup({
+	    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+	  })
       end
     }
 
@@ -206,7 +212,8 @@ return require('packer').startup(function(use)
     use { "sbdchd/neoformat", cmd = { "Neoformat" } }
 
     -- Git command inside vim
-    use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
+    -- use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
+    use { "tpope/vim-fugitive", config = [[require('config.fugitive')]] }
 
     -- Better git log display
     use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
