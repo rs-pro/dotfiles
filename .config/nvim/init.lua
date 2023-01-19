@@ -64,3 +64,6 @@ vim.api.nvim_cmd({
     "Ack",
     },
 }, {})
+
+vim.cmd("au BufRead,BufNewFile *.es6 set filetype=javascript")
+
