@@ -35,10 +35,10 @@ keymap.set("i", "<PageUp>", "<C-O><C-U>")
 keymap.set("i", "<PageDown>", "<C-O><C-D>")
 
 -- Better home key
-keymap.set("n", "<Home>", "^")
-keymap.set("i", "<Home>", "<C-O><Home>")
-keymap.set("n", "<kHome>", "^")
-keymap.set("i", "<kHome>", "<C-O><Home>")
+keymap.set("n", "<Home>", "^", {remap=true})
+keymap.set("i", "<Home>", "<C-O><Home>", {remap=true})
+keymap.set("n", "<kHome>", "^", {remap=true})
+keymap.set("i", "<kHome>", "<C-O><Home>", {remap=true})
 
 -- Move line with ctrl-up/down - requires unimpaired.vim
 keymap.set("n", "<C-Up>", "[e", {remap=true})
