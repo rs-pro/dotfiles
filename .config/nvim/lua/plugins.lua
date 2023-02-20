@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp" }
 
+    use { "neoclide/coc.nvim", branch = 'release'}
+
     use {
       "nvim-treesitter/nvim-treesitter",
       event = "BufEnter",
