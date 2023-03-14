@@ -3,6 +3,9 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup {
+  enabled = true,
+  preselect = cmp.PreselectMode.None,
+  autocomplete = false,
   snippet = {
     expand = function(args)
       -- For `ultisnips` user.
@@ -10,21 +13,48 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ["<Tab>"] = function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       else
         fallback()
       end
-    end,
-    ["<S-Tab>"] = function(fallback)
+    end,{"i"}),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
         fallback()
       end
-    end,
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    end,{"i"}),
+    --[[ ["<Down>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,{"i"}),
+    ["<Up>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,{"i"}), ]]
+    ["<C-Space>"] = cmp.mapping.complete(),
+    --["<CR>"] = cmp.config.disable,
+    --[[ ["<CR>"] = cmp.mapping(function(fallback)
+      if cmp.get_active_entry() then
+        cmp.confirm({
+	  select = true,
+	  behavior = cmp.ConfirmBehavior.Replace
+	})
+      else
+        fallback()
+      end
+    end,{"i","c"}), ]]
+    ["<CR>"] = cmp.mapping.confirm { select = false },
+    ["<C-t>"] = cmp.mapping.confirm { select = true },
     ["<C-e>"] = cmp.mapping.abort(),
     ["<Esc>"] = cmp.mapping.close(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -40,7 +70,7 @@ cmp.setup {
   },
   completion = {
     keyword_length = 1,
-    completeopt = "menu,noselect",
+    completeopt = "menu,menuone,preview,noinsert,noselect",
   },
   view = {
     entries = "custom",

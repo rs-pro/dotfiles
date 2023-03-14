@@ -18,10 +18,12 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
 
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp" }
+    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
-    use { "neoclide/coc.nvim", branch = 'release'}
+    -- use { "neoclide/coc.nvim", branch = 'release'}
 
     use {
       "nvim-treesitter/nvim-treesitter",
