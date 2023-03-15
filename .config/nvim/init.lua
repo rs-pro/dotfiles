@@ -28,6 +28,8 @@ vim.opt.backspace = 'indent,eol,start'
 vim.g.mapleader = "\\"
 vim.cmd([[let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-Up>'], '<Down>': ['<C-Down>']}]])
 
+vim.cmd([[let g:UltiSnipsExpandTrigger = '<C-Tab>']])
+vim.cmd([[let g:UltiSnipsListSnippets = '<C-M-Tab>']])
 
 vim.g.ackprg = 'ag --vimgrep --smart-case'
 vim.cmd.inoreabbrev({"ag", "Ack"})
