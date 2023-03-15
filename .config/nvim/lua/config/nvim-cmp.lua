@@ -4,14 +4,18 @@ local lspkind = require("lspkind")
 
 cmp.setup {
   enabled = true,
+  confirmation = {
+    get_commit_characters = function(commit_characters)
+      return {}
+    end
+  },
   preselect = cmp.PreselectMode.None,
-  autocomplete = false,
-  snippet = {
+  --[[ snippet = {
     expand = function(args)
       -- For `ultisnips` user.
       vim.fn["UltiSnips#Anon"](args.body)
     end,
-  },
+  }, ]]
   mapping = cmp.mapping.preset.insert {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -66,11 +70,11 @@ cmp.setup {
     { name = "path" }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
     { name = "omni" },
-    { name = "emoji", insert = true }, -- emoji completion
   },
   completion = {
     keyword_length = 1,
     completeopt = "menu,menuone,preview,noinsert,noselect",
+    autocomplete = false,
   },
   view = {
     entries = "custom",

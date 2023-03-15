@@ -11,6 +11,7 @@ vim.opt.shiftwidth = 2
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044
 vim.opt.autoread = true
@@ -21,6 +22,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.signcolumn = "yes"
 vim.opt.virtualedit = 'onemore'
 vim.opt.backspace = 'indent,eol,start'
 vim.g.mapleader = "\\"

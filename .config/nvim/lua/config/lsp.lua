@@ -22,7 +22,7 @@ local custom_attach = function(client, bufnr)
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
   map("n", "K", vim.lsp.buf.hover)
-  map("n", "<C-k>", vim.lsp.buf.signature_help)
+  map("n", "<C-h>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
   map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "previous diagnostic" })
@@ -38,10 +38,8 @@ local custom_attach = function(client, bufnr)
   end, { desc = "list workspace folder" }) ]]
 
   -- Set some key bindings conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     map("n", "<space>f", vim.lsp.buf.formatting_sync, { desc = "format code" })
-  end
-  if client.resolved_capabilities.document_range_formatting then
     map("x", "<space>f", vim.lsp.buf.range_formatting, { desc = "range format" })
   end
 
@@ -106,7 +104,7 @@ fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHin
 -- global config for diagnostic
 vim.diagnostic.config {
   underline = false,
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   severity_sort = true,
 }

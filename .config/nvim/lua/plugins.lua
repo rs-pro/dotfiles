@@ -11,12 +11,17 @@ return require('packer').startup(function(use)
     -- auto-completion engine
     use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
 
+    -- Snippet engine and snippet template
+    use { "SirVer/ultisnips", event = "InsertEnter" }
+    use { "honza/vim-snippets", after = "ultisnips" }
+
+
     -- nvim-cmp completion sources
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
+    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
 
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
@@ -149,10 +154,6 @@ return require('packer').startup(function(use)
 
     -- open URL in browser
     use { "tyru/open-browser.vim", event = "VimEnter" }
-
-    -- Snippet engine and snippet template
-    -- use { "SirVer/ultisnips", event = "InsertEnter" }
-    -- use { "honza/vim-snippets", after = "ultisnips" }
 
     -- Automatic insertion and deletion of a pair of characters
     use { "Raimondi/delimitMate", event = "InsertEnter" }
