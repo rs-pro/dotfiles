@@ -72,6 +72,8 @@ local custom_attach = function(client, bufnr)
   })
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local lspconfig = require("lspconfig")
 
 lspconfig.gopls.setup {
@@ -80,6 +82,7 @@ lspconfig.gopls.setup {
   -- filetypes = {"go", "gomod"},
   settings = {
   },
+  capabilities = capabilities,
 }
 
 lspconfig.tsserver.setup {
@@ -87,6 +90,7 @@ lspconfig.tsserver.setup {
   -- filetypes = {"js", "jsx", "es6", "ts", "tsx", "javascriptreact"},
   settings = {
   },
+  capabilities = capabilities,
 }
 
 -- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
@@ -94,6 +98,7 @@ lspconfig.lua_ls.setup {
   on_attach = custom_attach,
   settings = {
   },
+  capabilities = capabilities,
 }
 
 -- Change diagnostic signs.

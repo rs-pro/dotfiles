@@ -31,33 +31,8 @@ cmp.setup {
         fallback()
       end
     end,{"i"}),
-    --[[ ["<Down>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,{"i"}),
-    ["<Up>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,{"i"}), ]]
     ["<C-Space>"] = cmp.mapping.complete(),
-    --["<CR>"] = cmp.config.disable,
-    --[[ ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.get_active_entry() then
-        cmp.confirm({
-	  select = true,
-	  behavior = cmp.ConfirmBehavior.Replace
-	})
-      else
-        fallback()
-      end
-    end,{"i","c"}), ]]
-    ["<CR>"] = cmp.mapping.confirm { select = false },
+    ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
     ["<C-t>"] = cmp.mapping.confirm { select = true },
     ["<C-e>"] = cmp.mapping.abort(),
     ["<Esc>"] = cmp.mapping.close(),
@@ -67,14 +42,14 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" }, -- For nvim-lsp
     { name = "ultisnips" }, -- For ultisnips user.
-    { name = "path" }, -- for path completion
+    { name = "path", keyword_length = 2 }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
     { name = "omni" },
   },
   completion = {
     keyword_length = 1,
     completeopt = "menu,menuone,preview,noinsert,noselect",
-    autocomplete = false,
+    -- autocomplete = true,
   },
   view = {
     entries = "custom",
