@@ -324,4 +324,5 @@ return require('packer').startup(function(use)
 
     use { "gpanders/editorconfig.nvim" }
 
+    use { "tomarrell/vim-npr"}
 end)

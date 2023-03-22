@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "gopls", "lua_ls", "tsserver"},
+    ensure_installed = { "gopls", "tsserver"},
 }
 
 local fn = vim.fn
@@ -95,7 +95,10 @@ lspconfig.tsserver.setup {
 
 -- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
 lspconfig.lua_ls.setup {
-  on_attach = custom_attach,
+  --on_attach = custom_attach,
+  on_attach = function(client)
+    client.server_capabilities.completionProvider = false
+  end,
   settings = {
   },
   capabilities = capabilities,
