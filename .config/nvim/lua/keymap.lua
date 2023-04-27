@@ -33,6 +33,8 @@ keymap.set("n", "<PageUp>", "<C-U>")
 keymap.set("n", "<PageDown>", "<C-D>")
 keymap.set("i", "<PageUp>", "<C-O><C-U>")
 keymap.set("i", "<PageDown>", "<C-O><C-D>")
+keymap.set("v", "<PageUp>", "<C-U>")
+keymap.set("v", "<PageDown>", "<C-D>")
 
 -- Better home key
 keymap.set("n", "<Home>", "^", {remap=true})

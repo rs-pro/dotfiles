@@ -15,7 +15,6 @@ return require('packer').startup(function(use)
     use { "SirVer/ultisnips", event = "InsertEnter" }
     use { "honza/vim-snippets", after = "ultisnips" }
 
-
     -- nvim-cmp completion sources
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
@@ -325,4 +324,9 @@ return require('packer').startup(function(use)
     use { "gpanders/editorconfig.nvim" }
 
     use { "tomarrell/vim-npr"}
+
+    use {
+	    "chrisgrieser/nvim-early-retirement",
+	    config = function () require("early-retirement").setup() end,
+    }
 end)

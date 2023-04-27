@@ -16,7 +16,9 @@ local custom_attach = function(client, bufnr)
     opts = opts or {}
     opts.silent = true
     opts.buffer = bufnr
-    keymap.set(mode, l, r, opts)
+    if r then
+      keymap.set(mode, l, r, opts)
+    end
   end
 
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
@@ -34,6 +36,7 @@ local custom_attach = function(client, bufnr)
   map("n", "<space>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
   map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
   map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
+  map("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type [D]efinition" })
   --[[ map("n", "<space>wl", function()
     inspect(vim.lsp.buf.list_workspace_folders())
   end, { desc = "list workspace folder" }) ]]
@@ -94,15 +97,15 @@ lspconfig.tsserver.setup {
 }
 
 -- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
-lspconfig.lua_ls.setup {
+-- lspconfig.lua_ls.setup {
   --on_attach = custom_attach,
-  on_attach = function(client)
-    client.server_capabilities.completionProvider = false
-  end,
-  settings = {
-  },
-  capabilities = capabilities,
-}
+  -- on_attach = function(client)
+    -- client.server_capabilities.completionProvider = false
+  -- end,
+  -- settings = {
+  -- },
+  -- capabilities = capabilities,
+-- }
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })

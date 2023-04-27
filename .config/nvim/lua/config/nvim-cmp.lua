@@ -10,12 +10,12 @@ cmp.setup {
     end
   },
   preselect = cmp.PreselectMode.None,
-  --[[ snippet = {
+  snippet = {
     expand = function(args)
       -- For `ultisnips` user.
       vim.fn["UltiSnips#Anon"](args.body)
     end,
-  }, ]]
+  },
   mapping = cmp.mapping.preset.insert {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -38,13 +38,26 @@ cmp.setup {
     ["<Esc>"] = cmp.mapping.close(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+    ['<C-Down>'] = {
+      i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    },
+    ['<C-Up>'] = {
+      i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    },
+    ['<Down>'] = {
+      i = cmp.config.disable
+    },
+    ['<Up>'] = {
+      i = cmp.config.disable
+    },
   },
   sources = {
     { name = "nvim_lsp" }, -- For nvim-lsp
     { name = "ultisnips" }, -- For ultisnips user.
     { name = "path", keyword_length = 2 }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
-    { name = "omni" },
+    -- { name = "omni" },
   },
   completion = {
     keyword_length = 1,
