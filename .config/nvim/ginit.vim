@@ -13,7 +13,3 @@ if exists('g:GuiLoaded')
   Guifont! PragmataProMono Nerd Font:h11
 endif
 
-function! DirTitle()
-  let &titlestring=fnamemodify(getcwd(), ':t')
-  set title
-endfunction
