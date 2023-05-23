@@ -40,7 +40,7 @@ vim.g.indentLine_color_term = 9
 vim.g.indentLine_char = '┆'
 
 -- colours and fonts
-vim.opt.background = 'dark'
+-- vim.opt.background = 'dark'
 -- vim.cmd('colorscheme rasmus')
 -- require('zephyr')
 
