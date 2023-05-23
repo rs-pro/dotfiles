@@ -1,106 +1,27 @@
-Xft.antialias:  1
-Xft.autohint:   0
-
-Xft.dpi:        96
-XTerm*faceName: xft:PragmataPro:pixelsize=14
-URxvt*font: xft:PragmataPro Mono:pixelsize=14:antialias=true
-URxvt*boldFont: xft:PragmataPro Mono:pixelsize=14:antialias=true
-
-Xft.hinting:    1
-Xft.hintstyle:  hintfull
-Xft.rgba:       rgb
-Xft.lcdfilter:  lcddefault
-
-URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.saveLines:            50000
-URxvt.internalBorder:       3
-URxvt.lineSpace:            0
-
-! Fonts
-URxvt.allow_bold:           true
-
-! Fix font space
-URxvt*letterSpace: -2
-URxvt*meta8: false
-urxvt*metaSendsEscape:    true
-
-! Scrollbar
-! URxvt*scrollBar:  false
-URxvt.scrollStyle:          plain
-URxvt.scrollBar:            true
-URxvt*scrollBar_right:        true
-URxvt*scrollColor:        #000000
-
-! Perl extensions
-!URxvt.perl-ext-common:      default,matcher
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          /usr/bin/chromium
-
-! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
-
-! Pointer
-URxvt.pointerBlank:         true
-
-!!Source http://github.com/altercation/solarized
-
-URxvt.perl-ext-common:      default,clipboard
-
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-e:           perl:keyboard-select:search
-
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-! Atom One Light theme
-xterm*background: #f9f9f9
-xterm*foreground: #383a42
-xterm*cursorColor: #d0d0d0
-xterm*color0: #000000
-xterm*color1: #E45649
-xterm*color2: #50A14F
-xterm*color3: #986801
-xterm*color4: #4078F2
-xterm*color5: #A626A4
-xterm*color6: #0184BC
-xterm*color7: #A0A1A7
-xterm*color8: #5c6370
-xterm*color9: #e06c75
-xterm*color10: #50A14F
-xterm*color11: #986801
-xterm*color12: #4078F2
-xterm*color13: #A626A4
-xterm*color14: #0184BC
-xterm*color15: #ffffff
-
-! Atom One Light theme
-urxvt*background: #f9f9f9
-urxvt*foreground: #383a42
-urxvt*cursorColor: #d0d0d0
-urxvt*color0: #000000
-urxvt*color1: #E45649
-urxvt*color2: #50A14F
-urxvt*color3: #986801
-urxvt*color4: #4078F2
-urxvt*color5: #A626A4
-urxvt*color6: #0184BC
-urxvt*color7: #A0A1A7
-urxvt*color8: #5c6370
-urxvt*color9: #e06c75
-urxvt*color10: #50A14F
-urxvt*color11: #986801
-urxvt*color12: #4078F2
-urxvt*color13: #A626A4
-urxvt*color14: #0184BC
-urxvt*color15: #ffffff
-
+URxvt*tintColor: #ffffff
+URxvt*background: #ACA7AF
+URxvt*foreground: #454545
+!black
+URxvt*color0: #101010
+URxvt*color8: #404040
+!red
+URxvt*color1: #953331
+URxvt*color9: #8D4A48
+!green
+URxvt*color2: #546A29
+URxvt*color10: #7E9960
+!yellow
+URxvt*color3: #E9E184
+URxvt*color11: #9CA554
+!blue
+URxvt*color4: #385E6B
+URxvt*color12: #5C737C
+!magenta
+URxvt*color5: #7F355E
+URxvt*color13: #95618B
+!cyan
+URxvt*color6: #34676F
+URxvt*color14: #5D858A
+!white
+URxvt*color7: #D8DBA2
+URxvt*color15: #D8DBA2

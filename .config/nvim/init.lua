@@ -82,3 +82,4 @@ vim.cmd("au BufRead,BufNewFile *.es6 set filetype=javascript")
 
 vim.g.vim_npr_default_dirs = { "src", "lib", "test", "webpack", "node_modules" }
 
+-- vim.cmd.colorscheme('onehalflight')

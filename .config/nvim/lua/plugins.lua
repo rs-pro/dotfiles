@@ -98,12 +98,20 @@ return require('packer').startup(function(use)
     --use { "catppuccin/nvim", as = "catppuccin", opt = true }
     --use({'glepnir/zephyr-nvim', opt = true})
 
+    --use {
+    --  'navarasu/onedark.nvim',
+    --  config = function()
+    --    require('onedark').load()
+    --  end
+    --}
+
     use {
-      'navarasu/onedark.nvim',
+      "sonph/onehalf",
+      rtp = 'vim/',
       config = function()
-        require('onedark').load()
-      end
-    }
+        vim.cmd.colorscheme('onehalflight')
+      end,
+      }
 
     --use 'kvrohit/rasmus.nvim'
 
