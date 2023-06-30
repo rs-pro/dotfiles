@@ -60,7 +60,7 @@ URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,clipboard
+URxvt.perl-ext-common:      default,clipboard,-confirm-paste
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
