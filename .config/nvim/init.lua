@@ -31,6 +31,8 @@ vim.cmd([[let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>':
 vim.cmd([[let g:UltiSnipsExpandTrigger = '<C-Tab>']])
 vim.cmd([[let g:UltiSnipsListSnippets = '<C-M-Tab>']])
 
+vim.cmd([[set langmap=йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?]])
+
 vim.g.ackprg = 'ag --vimgrep --smart-case'
 vim.cmd.inoreabbrev({"ag", "Ack"})
 vim.cmd.inoreabbrev({"Ag", "Ack"})
