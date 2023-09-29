@@ -110,8 +110,9 @@ return require('packer').startup(function(use)
       rtp = 'vim/',
       config = function()
 	vim.opt.background = 'light'
-	--vim.opt.background = 'dark'
         vim.cmd.colorscheme('onehalflight')
+	--vim.opt.background = 'dark'
+        --vim.cmd.colorscheme('onehalfdark')
       end,
       }
 
@@ -335,8 +336,11 @@ return require('packer').startup(function(use)
 
     use { "tomarrell/vim-npr"}
 
-    use {
-	    "chrisgrieser/nvim-early-retirement",
-	    config = function () require("early-retirement").setup() end,
-    }
+    -- broken TODO enable later
+    -- use {
+	    -- "chrisgrieser/nvim-early-retirement",
+	    -- config = function () require("early-retirement").setup() end,
+    -- }
+
+    use { "codelitt/vim-qtpl" }
 end)

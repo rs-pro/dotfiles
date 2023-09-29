@@ -15,18 +15,18 @@ nvim_tree.setup {
   update_cwd = false,
   view = {
     width = 30,
-    hide_root_folder = false,
+    --hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
+    -- mappings = {
+      -- custom_only = false,
+      -- list = {
         -- user mappings go here
-      },
-    },
+      -- },
+    -- },
   },
   renderer = {
     indent_markers = {
