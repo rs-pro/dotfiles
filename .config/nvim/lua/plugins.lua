@@ -98,21 +98,22 @@ return require('packer').startup(function(use)
     --use { "catppuccin/nvim", as = "catppuccin", opt = true }
     --use({'glepnir/zephyr-nvim', opt = true})
 
-    --use {
-    --  'navarasu/onedark.nvim',
-    --  config = function()
-    --    require('onedark').load()
-    --  end
-    --}
+    use {
+      'navarasu/onedark.nvim',
+      config = function()
+        require('onedark').load()
+	vim.opt.background = 'dark'
+      end
+    }
 
     use {
       "sonph/onehalf",
       rtp = 'vim/',
       config = function()
-	vim.opt.background = 'light'
-        vim.cmd.colorscheme('onehalflight')
-	--vim.opt.background = 'dark'
-        --vim.cmd.colorscheme('onehalfdark')
+        --vim.opt.background = 'light'
+        --vim.cmd.colorscheme('onehalflight')
+        vim.opt.background = 'dark'
+        vim.cmd.colorscheme('onehalfdark')
       end,
       }
 
@@ -335,6 +336,7 @@ return require('packer').startup(function(use)
     use { "gpanders/editorconfig.nvim" }
 
     use { "tomarrell/vim-npr"}
+
 
     -- broken TODO enable later
     -- use {
