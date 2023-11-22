@@ -82,6 +82,7 @@ vim.cmd("au BufRead,BufNewFile *.thor set filetype=ruby")
 
 
 vim.g.vim_npr_default_dirs = { "src", "lib", "test", "webpack", "node_modules" }
+vim.g.go_fmt_command = "goimports"
 
 -- vim.cmd.colorscheme('onehalflight')
 
