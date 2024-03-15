@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "tsserver"},
+    ensure_installed = { "tsserver", "phpactor", "solargraph" },
 }
 
 local fn = vim.fn
@@ -20,6 +20,7 @@ local custom_attach = function(client, bufnr)
       keymap.set(mode, l, r, opts)
     end
   end
+
 
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
@@ -95,6 +96,23 @@ lspconfig.tsserver.setup {
   },
   capabilities = capabilities,
 }
+
+lspconfig.phpactor.setup {
+  on_attach = custom_attach,
+  -- filetypes = {"js", "jsx", "es6", "ts", "tsx", "javascriptreact"},
+  settings = {
+  },
+  capabilities = capabilities,
+}
+
+lspconfig.solargraph.setup {
+  on_attach = custom_attach,
+  -- filetypes = {"js", "jsx", "es6", "ts", "tsx", "javascriptreact"},
+  settings = {
+  },
+  capabilities = capabilities,
+}
+
 
 -- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
 -- lspconfig.lua_ls.setup {

@@ -12,15 +12,23 @@ return require('packer').startup(function(use)
     use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
 
     -- Snippet engine and snippet template
-    use { "SirVer/ultisnips", event = "InsertEnter" }
-    use { "honza/vim-snippets", after = "ultisnips" }
+    -- use { "SirVer/ultisnips", event = "InsertEnter" }
+    -- use { "honza/vim-snippets", after = "ultisnips" }
+
+    use({
+	    "L3MON4D3/LuaSnip",
+	    -- follow latest release.
+	    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	    -- install jsregexp (optional!:).
+	    run = "make install_jsregexp"
+    })
 
     -- nvim-cmp completion sources
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
+    -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
 
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
@@ -187,15 +195,15 @@ return require('packer').startup(function(use)
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    --use({
-    --  "Pocco81/auto-save.nvim",
-    --  config = function()
-    --  require("auto-save").setup {
-    --    enabled = true,
-    --    trigger_events = {"FocusLost"}
-    --  }
-    --  end,
-    --})
+    use({
+      "Pocco81/auto-save.nvim",
+      config = function()
+      require("auto-save").setup {
+        enabled = true,
+        trigger_events = {"FocusLost"}
+      }
+      end,
+    })
 
     -- Show undo history visually
     use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
@@ -272,7 +280,8 @@ return require('packer').startup(function(use)
     use { "machakann/vim-sandwich", event = "VimEnter" }
 
     -- Add indent object for vim (useful for languages like Python)
-    use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
+    -- use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
+    use { "maxmellon/vim-jsx-pretty" }
 
     -- .tmux.conf syntax highlighting and setting check
     use { "tmux-plugins/vim-tmux", ft = { "tmux" } }

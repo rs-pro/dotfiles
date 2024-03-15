@@ -11,10 +11,13 @@ cmp.setup {
   },
   preselect = cmp.PreselectMode.None,
   snippet = {
-    expand = function(args)
+    -- expand = function(args)
       -- For `ultisnips` user.
-      vim.fn["UltiSnips#Anon"](args.body)
-    end,
+      -- vim.fn["UltiSnips#Anon"](args.body)
+    -- end,
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end
   },
   mapping = cmp.mapping.preset.insert {
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -54,7 +57,8 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp" }, -- For nvim-lsp
-    { name = "ultisnips" }, -- For ultisnips user.
+    { name = 'luasnip' },
+    -- { name = "ultisnips" }, -- For ultisnips user.
     { name = "path", keyword_length = 2 }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
     -- { name = "omni" },
