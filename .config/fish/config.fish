@@ -41,7 +41,7 @@ set -x GOPRIVATE rscz.ru
 set -x ANDROID_HOME $HOME/Android/Sdk
 set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 
-source /home/gleb/.phpbrew/phpbrew.fish
+#source /home/gleb/.phpbrew/phpbrew.fish
 
 #set -a fish_user_paths /data/go/bin
 #set -a fish_user_paths $ANDROID_HOME/platform-tools
