@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "tsserver", "phpactor", "solargraph" },
+    ensure_installed = { "ts_ls", "phpactor", "solargraph" },
 }
 
 local fn = vim.fn
@@ -89,7 +89,7 @@ lspconfig.gopls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = custom_attach,
   -- filetypes = {"js", "jsx", "es6", "ts", "tsx", "javascriptreact"},
   settings = {

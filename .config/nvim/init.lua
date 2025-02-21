@@ -11,6 +11,7 @@ vim.opt.shiftwidth = 2
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+vim.env.PATH = vim.env.PATH .. ':/home/gleb/.local/share/nvm/v22.13.0/bin/'
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044

@@ -354,4 +354,6 @@ return require('packer').startup(function(use)
     -- }
 
     use { "codelitt/vim-qtpl" }
+
+    use { "David-Kunz/gen.nvim", config = [[require('config.gen')]] }
 end)

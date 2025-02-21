@@ -47,6 +47,16 @@ action = "Copy"
 key = "C"
 mods = "Alt"
 
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mods = "Alt"
+
 [mouse]
 hide_when_typing = true
 
@@ -55,7 +65,7 @@ action = "PasteSelection"
 mouse = "Middle"
 
 [scrolling]
-history = 0
+history = 100000
 multiplier = 3
 
 [selection]
