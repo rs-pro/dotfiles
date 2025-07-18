@@ -1,4 +1,4 @@
-# curl -L https://get.oh-my.fish | fish
+# curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 # omf install https://github.com/danhper/fish-ssh-agent
 # omf install bundler
 # omf install archlinux
