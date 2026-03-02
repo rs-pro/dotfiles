@@ -90,11 +90,11 @@ function rds
   rake db:seed
 end
 
-function rg
+function rag
   rails generate $argv
 end
 
-function rd
+function rad
   rails destroy $argv
 end
 
@@ -134,3 +134,16 @@ if ssh-add -l > /dev/null
 else
   ssh-add
 end
+
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
+
+set -g theme_display_date no
+
+set -l fish_env_file "$HOME/.config/fish/env.fish"
+if test -f "$fish_env_file"
+  source "$fish_env_file"
+end
+
+# opencode
+fish_add_path /home/gleb/.opencode/bin
