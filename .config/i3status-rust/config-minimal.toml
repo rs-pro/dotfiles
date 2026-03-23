@@ -1,0 +1,56 @@
+[icons]
+icons = "awesome6"
+
+[theme]
+theme = "solarized-dark"
+
+# ── Keyboard Layout ──────────────────────────────────
+[[block]]
+block = "keyboard_layout"
+driver = "xkbevent"
+format = " $layout "
+
+# ── Disk Space ───────────────────────────────────────
+[[block]]
+block = "disk_space"
+path = "/"
+format = " $available "
+info_type = "available"
+alert_unit = "GB"
+
+# ── Disk I/O ─────────────────────────────────────────
+[[block]]
+block = "disk_iostats"
+format = " $icon $speed_read $speed_write "
+interval = 2
+
+# ── Load Average ─────────────────────────────────────
+[[block]]
+block = "load"
+format = " $1m "
+interval = 5
+
+# ── Memory ───────────────────────────────────────────
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+
+# ── IP Address ───────────────────────────────────────
+# Uncomment and configure device name for your system:
+# [[block]]
+# block = "net"
+# format = " $icon $ip via $device "
+# interval = 5
+
+# ── Clock/Time ───────────────────────────────────────
+[[block]]
+block = "time"
+interval = 10
+format = " $icon $timestamp.datetime(f:'%a %Y-%m-%d %H:%M:%S') "
+
+# ── Battery ──────────────────────────────────────────
+# Desktop systems may not have a battery - comment out if not needed
+# [[block]]
+# block = "battery"
+# format = " $icon $percentage "
+# missing_format = ""

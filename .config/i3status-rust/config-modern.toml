@@ -1,0 +1,110 @@
+[icons]
+icons = "awesome6"
+
+[theme]
+theme = "solarized-dark"
+
+# ═══════════════════════════════════════════════════════════
+# MODERN CONFIG - Universal template with all modules enabled
+# ═══════════════════════════════════════════════════════════
+# Copy to ~/.config/i3status-rust/config.toml and customize
+
+# ── Keyboard Layout ──────────────────────────────────
+# Uses xkbevent driver for X11, or "sway" for Wayland
+[[block]]
+block = "keyboard_layout"
+driver = "xkbevent"
+format = " $layout "
+
+# ── CPU ───────────────────────────────────────────────
+[[block]]
+block = "cpu"
+format = " $barchart $utilization "
+interval = 1
+info_cpu = 20
+warning_cpu = 50
+critical_cpu = 90
+
+# ── System Load ───────────────────────────────────────
+[[block]]
+block = "load"
+format = " $icon $1m $5m $15m "
+interval = 5
+
+# ── Memory ───────────────────────────────────────────
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+format_alt = " $icon_swap $swap_used_percents "
+interval = 5
+
+# ── Disk Space ───────────────────────────────────────
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = " $icon root: $available "
+format_alt = " $icon root: $available / $total "
+
+# ── Disk I/O ─────────────────────────────────────────
+[[block]]
+block = "disk_iostats"
+format = " $icon $speed_read $speed_write "
+interval = 2
+
+# ── Temperature ───────────────────────────────────────
+[[block]]
+block = "temperature"
+format = " $icon $max "
+format_alt = " $icon min $min, avg $average, max $max "
+interval = 5
+warning = 70
+
+# ── Battery ──────────────────────────────────────────
+# Desktop systems may not have a battery - hides automatically
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+missing_format = ""
+
+# ── Network Interfaces ────────────────────────────────
+[[block]]
+block = "net"
+format = " $icon $ip "
+format_alt = " $icon {$signal_strength $ssid |Wired} $ip "
+
+# ── External IP ───────────────────────────────────────
+[[block]]
+block = "external_ip"
+format = " $ip "
+
+# ── Sound/Volume ──────────────────────────────────────
+[[block]]
+block = "sound"
+format = " $icon $volume "
+
+# ── Music Player ─────────────────────────────────────
+# DeaDBeeF MPRIS support
+[[block]]
+block = "music"
+player = "deadbeef"
+format = " $icon {$combo.str(max_w:40) $play |}"
+
+# ── NVIDIA GPU ────────────────────────────────────────
+[[block]]
+block = "nvidia_gpu"
+format = " $icon $utilization $memory $temperature "
+
+# ── Clock/Time ────────────────────────────────────────
+# Click to open calendar (install gsimplecal)
+[[block]]
+block = "time"
+interval = 10
+format = " $icon $timestamp.datetime(f:'%a %Y-%m-%d %H:%M:%S') "
+[[block.click]]
+button = "left"
+cmd = "gsimplecal"
