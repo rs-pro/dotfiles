@@ -23,7 +23,7 @@ require("mason").setup({
 vim.env.PATH = get_rbenv_path() .. ":" .. vim.env.PATH
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "ts_ls", "phpactor", "solargraph" },
+    ensure_installed = { "ts_ls", "phpactor" },
 }
 
 local fn = vim.fn

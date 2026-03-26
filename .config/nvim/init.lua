@@ -86,7 +86,8 @@ vim.opt.spelloptions = 'camel'
 vim.opt.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
 
-vim.opt.shellcmdflag = '-s'
+-- breaks git in fish
+-- vim.opt.shellcmdflag = '-s'
 
 vim.diagnostic.config({
   virtual_text = {
