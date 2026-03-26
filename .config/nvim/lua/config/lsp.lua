@@ -1,4 +1,27 @@
-require("mason").setup()
+-- Configure PATH for Mason to find rbenv's gem
+local function get_rbenv_path()
+  local home = os.getenv("HOME")
+  if home then
+    return home .. "/.rbenv/shims:" .. home .. "/.rbenv/bin"
+  end
+  return ""
+end
+
+require("mason").setup({
+  PATH = "prepend",
+  -- Prepend rbenv paths to Mason's PATH
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  }
+})
+
+-- Ensure PATH includes rbenv for Mason operations
+vim.env.PATH = get_rbenv_path() .. ":" .. vim.env.PATH
+
 require("mason-lspconfig").setup {
     ensure_installed = { "ts_ls", "phpactor", "solargraph" },
 }
@@ -107,8 +130,13 @@ lspconfig.phpactor.setup {
 
 lspconfig.solargraph.setup {
   on_attach = custom_attach,
-  -- filetypes = {"js", "jsx", "es6", "ts", "tsx", "javascriptreact"},
+  cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), "stdio" },
   settings = {
+    solargraph = {
+      diagnostics = true,
+      completion = true,
+      useBundler = false,
+    }
   },
   capabilities = capabilities,
 }

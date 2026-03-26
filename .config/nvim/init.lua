@@ -1,6 +1,25 @@
 -- https://www.imaginaryrobots.net/posts/2021-04-17-converting-vimrc-to-lua/
 
-require('plugins')
+-- Configure Python path for pyenv
+-- vim.g.python3_host_prog = '/home/gleb/.pyenv/shims/python3'
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Load plugins
+require("lazy").setup("plugins")
+
 require('keymap')
 
 vim.opt.number = true
@@ -8,89 +27,81 @@ vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.shiftwidth = 2
-vim.opt.autoindent = true
+
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 
-vim.env.PATH = vim.env.PATH .. ':/home/gleb/.local/share/nvm/v22.13.0/bin/'
-
--- auto-reload files when modified externally
--- https://unix.stackexchange.com/a/383044
-vim.opt.autoread = true
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
-})
-vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.virtualedit = 'onemore'
-vim.opt.backspace = 'indent,eol,start'
-vim.g.mapleader = "\\"
-vim.cmd([[let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-Up>'], '<Down>': ['<C-Down>']}]])
 
-vim.cmd([[let g:UltiSnipsExpandTrigger = '<C-Tab>']])
-vim.cmd([[let g:UltiSnipsListSnippets = '<C-M-Tab>']])
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-vim.g.ackprg = 'ag --vimgrep --smart-case'
-vim.cmd.inoreabbrev({"ag", "Ack"})
-vim.cmd.inoreabbrev({"Ag", "Ack"})
+vim.opt.scrolloff = 7
 
-vim.g.indentLine_setColors = 0
-vim.g.indentLine_color_term = 9
-vim.g.indentLine_char = '┆'
+vim.opt.termguicolors = true
 
--- colours and fonts
--- vim.opt.background = 'dark'
--- vim.cmd('colorscheme rasmus')
--- require('zephyr')
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-vim.opt.undodir = vim.fn.expand('~/.nvim/undo')
-vim.opt.backupdir = vim.fn.expand('~/.nvim/backup')
-vim.opt.directory = vim.fn.expand('~/.nvim/swap')
+vim.opt.pumheight = 10
 
-vim.opt.undofile = true
-vim.opt.undolevels = 3000
-vim.opt.undoreload = 10000
-vim.opt.backup = true
+vim.opt.showmode = false
+
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 200
+
+vim.opt.autowrite = false
+
+vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.fillchars = { eob = ' ' }
+
 vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
+vim.opt.undofile = true
 
-vim.opt.foldmethod = 'syntax'
-vim.opt.foldlevelstart = 100
+vim.opt.showbreak = '↪'
 
-vim.opt.completeopt = "noinsert,noselect"
+vim.opt.wildmode = { 'longest:full', 'full' }
 
-vim.api.nvim_cmd({
-  cmd = "cabbrev",
-  args = {
-    "ack",
-    "Ack",
-    },
-}, {})
+vim.opt.winminwidth = 5
 
-vim.api.nvim_cmd({
-  cmd = "cabbrev",
-  args = {
-    "ag",
-    "Ack",
-    },
-}, {})
+vim.opt.grepprg = 'rg --vimgrep --follow'
 
--- vim.cmd("set includeexpr=substitute(v:fname,'^\\~\/'','webpack/','')")
--- vim.cmd("set suffixesadd=.es6,.jsx,.sass")
-vim.cmd("au BufRead,BufNewFile *.es6 set filetype=javascript")
-vim.cmd("au BufRead,BufNewFile *.thor set filetype=ruby")
+vim.opt.title = true
 
+vim.opt.confirm = true
 
-vim.g.vim_npr_default_dirs = { "src", "lib", "test", "webpack", "node_modules" }
-vim.g.go_fmt_command = "goimports"
+vim.opt.exrc = true
 
--- vim.cmd.colorscheme('onehalflight')
+-- spell
+vim.opt.spelllang = { 'en', 'ru' }
+vim.opt.spelloptions = 'camel'
 
+vim.opt.encoding = 'utf-8'
+vim.scriptencoding = 'utf-8'
 
-vim.cmd([[
-function! DirTitle()
-  let &titlestring=fnamemodify(getcwd(), ':t')
-  set title
-endfunction
-]])
+vim.opt.shellcmdflag = '-s'
+
+vim.diagnostic.config({
+  virtual_text = {
+    source = 'if_many',
+    prefix = ' ■',
+  },
+})
+
+-- Autocommands
+local api = vim.api
+
+-- Highlight on yank
+api.nvim_exec([[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]], false)
