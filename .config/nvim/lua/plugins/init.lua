@@ -34,24 +34,18 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
     config = function() require('config.treesitter') end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
   },
 
   -- Utilities
   { "machakann/vim-swap", event = "VeryLazy" },
   
-  {
-    "phaazon/hop.nvim",
-    event = "VeryLazy",
-    config = function()
-      vim.defer_fn(function()
-        require("config.nvim_hop")
-      end, 2000)
-    end,
-  },
-
   {
     "kevinhwang91/nvim-hlslens",
     branch = "main",
@@ -154,7 +148,6 @@ return {
   { "Raimondi/delimitMate", event = "InsertEnter" },
   
   -- Comments
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
@@ -256,7 +249,7 @@ return {
   { "codelitt/vim-qtpl", lazy = false },
 
   -- Matchup
-  { "andymass/vim-matchup", lazy = false },
+  -- { "andymass/vim-matchup", lazy = false },
 
   -- Async
   { "skywind3000/asyncrun.vim", cmd = "AsyncRun" },

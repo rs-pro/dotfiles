@@ -1,5 +1,3 @@
-local queries = require "nvim-treesitter.query"
-
 require("nvim-treesitter.configs").setup {
   ensure_installed = { "python", "cpp", "lua", "vim", "javascript", "ruby", "go", "css", "html", "java", "php", "rust", "typescript", "comment"},
   ignore_install = {}, -- List of parsers to ignore installing
@@ -15,7 +13,6 @@ require("nvim-treesitter.configs").setup {
             return true
         end
     end,
-    is_supported = queries.has_highlights,
     --additional_vim_regex_highlighting = false,
     additional_vim_regex_highlighting = true
   },
@@ -24,5 +21,6 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
-require'nvim-treesitter.configs'.setup {
-}
+require('ts_context_commentstring').setup({
+  enable_autocmd = false,
+})
